@@ -114,10 +114,9 @@ int main(int argc, char **argv)
 
   // get the memory to be allocated in KB
   if(argc > 1)
-    
-    S = (unsigned int)((atoi(*(argv+1)) * 1024));
-  	//atoi converts to integer, before it was atof and it still worked cause there was 
-	//another cast to int 
+    S = (unsigned int)(atoi(*(argv+1)) * 1024);
+  
+
   else
     {
       S = stack_limits.rlim_cur;
