@@ -80,11 +80,11 @@ int access_the_stack( void )
     {
       double t0 = CPU_TIME;
       
-      for ( int i = 0; i < N_DEFAULT; i++ )
-	on_stack[ i ] = (float)i;
+      for ( int i = 0; i < N_DEFAULT; i++ )f
+	       on_stack[ i ] = (float)i;
       float volatile access = 0;
       for ( int i = 0; i < N_DEFAULT; i++ )
-	access += on_stack[ i ] + 1.0;
+	       access += on_stack[ i ] + 1.0;
       
       time    += CPU_TIME - t0;
       std_dev += time*time;

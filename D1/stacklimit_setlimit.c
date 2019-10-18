@@ -115,11 +115,13 @@ int main(int argc, char **argv)
   // get the memory to be allocated in KB
   if(argc > 1)
     
-    S = (unsigned int)((int)(atof(*(argv+1)) * 1024));
-  
+    S = (unsigned int)((atoi(*(argv+1)) * 1024));
+  	//atoi converts to integer, before it was atof and it still worked cause there was 
+	//another cast to int 
   else
     {
       S = stack_limits.rlim_cur;
+      //we want to have a stack smashing, so we take the limit of the stack
       
       printf("\nyou did not give a memory amount to be allocated, "
 	     "I'll use the current soft stack limit of %u\n(hard limit is set to %d)\n",
@@ -128,7 +130,7 @@ int main(int argc, char **argv)
 
 
   printf("\n");
-  
+  //here we use the stacksmash so we are sure to go over the limit
   int MaxS = S;
   if ( MaxS < STACKSMASH )
     MaxS = STACKSMASH ;
@@ -139,7 +141,7 @@ int main(int argc, char **argv)
 	  ( (long int)stack_limits.rlim_max > MaxS ) )
 	// in this case you can enlarge the soft limit because either
 	// the hard limit is not set or it is larger than the requested memory
-	{
+	{//in this following way we are sure to have enough space for everything
 	  const struct rlimit mystack_limits = {MaxS + stack_limits.rlim_cur, stack_limits.rlim_max};
 	  if ( setrlimit(RLIMIT_STACK, &mystack_limits) == 0 )
 	    printf ( "\t --> the stack has been enlarged to %ld bytes\n\n", mystack_limits.rlim_cur );
