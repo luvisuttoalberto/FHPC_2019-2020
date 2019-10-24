@@ -1,1 +1,22 @@
-46.33
+5
+correct access = not writing at the same time
+6
+MPI is what we will use as communication libraries
+for shared memory, we will need to add some instructions to tell "Now we are going to do this in parallel"
+8
+OpenMP is based on inserting directives
+9
+The pragma option in the example is a preprocessor instruction
+Note that I can also define private variables for every thread, unaccessible from the other threads
+Remember to specify how many threads the program must be use when you compile the program
+12
+Functional decomposition and domain decomposition --> Ferrari example
+Another example: climate change: functional decomposition for ocean, land, atmosphere; another extra domain decomposition inside every decomposition
+18
+The reason for imbalance could also be data locality
+27
+s stands for the serial part; the big S stands for Speedup(p)
+28
+We still build computers with millions of cores even if with 2048 we reach the asymptotic behaviour; this is because [Probably Gustafson law]
+29
+Tc stands for communication time

@@ -80,13 +80,13 @@ int access_the_stack( void )
     {
       double t0 = CPU_TIME;
       
-      for ( int i = 0; i < N_DEFAULT; i++ )f
+      for ( int i = 0; i < N_DEFAULT; i++ )
 	       on_stack[ i ] = (float)i;
       float volatile access = 0;
       for ( int i = 0; i < N_DEFAULT; i++ )
 	       access += on_stack[ i ] + 1.0;
       
-      timediff = CPU_TIME - t0;
+      double timediff = CPU_TIME - t0;
       time    += timediff;
       std_dev += timediff*timediff;
     }
@@ -118,7 +118,7 @@ int access_the_heap( void )
       for ( int i = 0; i < N_DEFAULT; i++ )
 	access += on_heap[ i ] + 1.0;
       
-      timediff = CPU_TIME - t0;
+      double timediff = CPU_TIME - t0;
       time    += timediff;
       std_dev += timediff*timediff;
     }
@@ -156,7 +156,7 @@ int access_the_heap_dp ( void )
       for ( entry = on_heap; ++entry < stop;  )
 	access += *entry + 1.0;
 	  
-      timediff = CPU_TIME - t0;
+      double timediff = CPU_TIME - t0;
       time    += timediff;
       std_dev += timediff*timediff;
     }
