@@ -1,0 +1,57 @@
+4
+Serial applications are needed for example when you have to run a lot of times the same program
+
+5
+This is only for HPC providers
+
+6
+Manageability: you want to make the machine usable by the user through a front end (preferibly always the same one)
+2: We want to improve the cluster without changing the interface
+
+7
+LRMS = Local Resource ManageR Service [/Software], also known as batch system
+
+8
+NTP needed for syncro
+NFS Network file system, needed to have the impression to work on a single computer
+
+14
+Preemption: stopping a program to run another one (maybe more important or one that has priority)
+Dependencies: a job that needs another job to end before beginning to work
+
+16/17/18/19/20 not really necessary
+
+26
+ppn are processors (cores); here I'm asking 1 node with 2 cores
+
+45
+Here we prepend instead of appending so that when we compile we are sure to look into this directory first; in this way we are sure that we are using the right version of the program
+Note that the path is not defined permanently, when you log out and log in again you have the same initial path unmodified, unless you use a specific command
+LD_LIBRARY_PATH is the list of directory where the compiler looks for when executing a program that uses dynamic libraries
+
+47
+We will use make as user, not as developers; complicated
+Autotools is even more complicated
+Cmake is the most recent one
+
+48
+Install openblas library
+
+49
+Usually large and old projects comes in this way.
+Note that usually executables go in /path/to/install_dir/bin, while libraries go in /path/to/install_dir/lib
+
+50
+Easier than autotools
+We will for sure use make (for openblas and hpl) and probably autotools
+
+51
+Note that we can have intel tools for free for one year, go download it
+
+52
+Dynamic libraries also called Shared libraries
+Different versions can also lead to a hidden error: maybe the compiler doesn't launch an error, but the numbers at the end of the program are wrong
+NB: always comment with the libraries (and their version) you use on your code
+
+54
+Skip, will done later

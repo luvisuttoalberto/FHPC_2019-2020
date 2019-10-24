@@ -1,0 +1,54 @@
+Office room 101, shared office in sissa too
+
+28
+SISD is von neumann sequential machine
+MISD not really considered in hpc
+SIMD one operation in multiple data, we will see it a lot (changing the weels)
+MIMD is slide 25: functional partitioning, different tasks
+
+31
+distributed memory requires a message passing approach
+Laptop has both distributed memory (obv) and shared memory (between cores)
+
+32
+UMA: going to a core to a location of the memory takes ALWAYS the same amount of time (laptops, the cores uses the same front side bus)
+[Bus = comunication channel]
+SMP machines are not really used so much now
+
+NUMA is very used in modern computers. [Search for examples because the example on the blackboard wes connected through the cpus, not the network]
+
+36
+MPP massive parallel processors
+
+41
+Usually "crunch numbers" means doing operations on floating point numbers
+
+42
+[cycle time now is around ns]
+
+43
+benchmark= small program in which you can now exactly the number of operations
+
+45
+The number of Gflops here is so high cause of the 2 accelerators (GPUs)
+When we talk about floats here we always consider double precision (8 Bytes)
+
+46
+HPL high performance linpack
+
+55
+Starvation: too many cores, too little tasks
+Latency: too much time waiting for memory access or exchange of information
+Overhead: organizing the tasks takes computing, if too much is needed it slows down the system, especially for too much core
+Waiting for contention: single bus access memory example.
+
+64
+latency here is in microseconds
+
+81
+TCO total cost of ownership
+
+83
+Softwar as a service
+Platform as a service
+Infrastructure as a service
