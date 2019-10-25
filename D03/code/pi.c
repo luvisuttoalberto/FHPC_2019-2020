@@ -17,8 +17,8 @@
 #include <time.h>
 #include <stdlib.h>
 // if you don ' t have drand48 uncomment the following two lines 10
-// #define drand48 1.0/RANDMAXrand
-// #define srand48 srand
+//#define drand48 1.0/RANDMAXrand
+//#define srand48 srand
 #define seed 68111 // seed for number generator
 
 int main (int argc, char ** argv) {
