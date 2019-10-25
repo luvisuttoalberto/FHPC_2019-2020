@@ -1,7 +1,7 @@
 4
 The global initialized variables are in the data segment
 stack is for local temporary variables
-heap is for dynamic allocation (maybe global)
+heap is for dynamic allocation (sometimes global)
 
 5
 There is always a pointer pointing to the memory where we can find the next instruction; in this way we can interprete that memory as an operation (for example)
@@ -9,5 +9,3 @@ Level 1 cache is separated in data cache and instruction cache, which is NOT the
 
 13
 "alloca" is a function to allocate memory space in the stack, for example when you don't know the size of the array from the beginning
-
-

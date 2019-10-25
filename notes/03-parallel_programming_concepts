@@ -20,3 +20,4 @@ s stands for the serial part; the big S stands for Speedup(p)
 We still build computers with millions of cores even if with 2048 we reach the asymptotic behaviour; this is because [Probably Gustafson law]
 29
 Tc stands for communication time
+We are here supposing s = 0, so p = 1
