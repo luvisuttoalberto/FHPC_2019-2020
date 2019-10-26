@@ -21,3 +21,5 @@ We still build computers with millions of cores even if with 2048 we reach the a
 29
 Tc stands for communication time
 We are here supposing s = 0, so p = 1
+30
+The communication time is multiplied to (P-1) because here we decided that also the master node will do a part of the computation, like the slaves
