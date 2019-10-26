@@ -1,20 +1,20 @@
 3
-Note that, clearly, on shared memory these two variables are the same variable; if you want to access it, you have to coordinate the two threads
-Here, if P0 wants to know the value of the other variable, needs MESSAGE PASSING
+Note that, clearly, on shared memory these two variables are the same variable; if you want to access it, you would have to coordinate the two threads.
+Instead here, if P0 wants to know the value of the other variable, MESSAGE PASSING is needed.
 6
 NB: C++ no more implemented, but you can use the C implementation on a c++ program
 11
-We won't see the four point
+We won't see the fourth point
 12
 Collective communication can be implemented using the one to one communication routines (SEND - RECEIVE)
 13
-Main difference: in Fortran we have routines, in C we have functions. In c we don't have to specify (err), we can just take the return value of the function and evaluate it
+Main difference: in Fortran we have routines, in C we have functions. In c we don't have to specify the variable err, we can just take the return value of the function and evaluate it.
 16
 Example of need of more than one communicator (ES. WORLD): two nodes with 20 cores each; I could want to communicate first within node 1 and within node 2; then i could want to communicate between the two nodes. This is convenient because communication between nodes is much slower, so i want to keep the communication between nodes to the essential. In this way we have 3 communicator; one (WORLD) is defined automatically, the other two need to be defined.
 Usually we have (P-1)Tcomm
 With this type of communication we have (supposing the communication is divided in half between across and within nodes)
 (P/2-1)Twithin + (P/2)Tacross
-[Twithin has also -1 for the master]
+[The -1 is for the master]
 If Twithin << Tacross (usually is) the T across becomes dominant obv
 So we obtain 
 (P-2)Twithin + Tacross
@@ -28,6 +28,6 @@ We won't need the Byte and Packed data types
 32
 Sometimes MPI send and receive behave as non-blocking operations
 37
-MPI_Request is the handle that gives youthe opportunity to test if the communication is [good/active???]
+MPI_Request is the handle that gives you the opportunity to test if the communication is [good/active???]
 42
 In this case we have to call an mpi wait to be sure everything is completed before i do something else on the buffers
