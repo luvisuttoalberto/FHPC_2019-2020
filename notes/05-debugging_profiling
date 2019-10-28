@@ -1,0 +1,5 @@
+35
+Remember to use -fno-omit-frame-pointer, in particular if you are doing optimization; here you are asking not to remove the frame information, because the debugger needs it
+
+
+Difference between next and step: if you are at the line of a function, with next you will go to the next line, so just execute the whole function; if you do step, you will get to the first line inside of the function

@@ -1,0 +1,14 @@
+4
+Obv if the barrier take a lot of time executing it means that there is a load balancing problem (Barrier is useful in this way)
+6
+NB error: in broadcast there is no rank: you just specify the communicator
+7
+Broadcast is blocking
+9
+Reduce work on one single processor ("receiver"); in the example, it's like if Sa and Sb would have been put only in P0 (if I chose P0 as the root in the function)
+It's always better to use a different buffer as the receiver; allocate a new one everytime, otherwise you overwrite the sender one (not very good operation)
+USE REDUCE IN THE ASSIGNMENT for the final sum of all the local sums
+USE ALSO scatter and gather
+You can also include the exercise in the assignment
+NB: read is from a file for the exercise; you read the size of the array, then we fill the array with random numbers in the program
+NB: don't count the input/output operations time (printf) in measuring the time of the algorithm
