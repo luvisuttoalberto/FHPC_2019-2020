@@ -51,7 +51,7 @@ int main(int argc, char ** argv){
 			MPI_Recv(&local_sum, 1, MPI_FLOAT, proc, tag, MPI_COMM_WORLD, &status);
 			sum+=local_sum;	
 		}
-		printf("The final sum is %f", sum);
+		printf("The final sum is %f \n", sum);
 	}
 
 	MPI_Finalize() ;
