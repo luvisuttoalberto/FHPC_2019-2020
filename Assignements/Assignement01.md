@@ -186,7 +186,7 @@ We request here to implement the sum of N number using MPI paradigm. Programming
 
 The program should: 
 
-- read from an input file  a number N arbitrarly large  (at least 1Billion number)
+- read from an input file a number N arbitrarly large  (at least 1Billion)
 
 - distribute to each processor the amount of work to be done
 

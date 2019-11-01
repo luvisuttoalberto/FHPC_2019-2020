@@ -58,21 +58,13 @@ int main(int argc, char ** argv){
 	comp_end_time = MPI_Wtime();
 	printf("[process %d] local_sum = %lld \n", rank, local_sum);
 	
-	if(rank!=master){
-		comm_start_time = MPI_Wtime();
-		MPI_Send(&local_sum, 1, MPI_LONG_LONG, master, tag, MPI_COMM_WORLD);
-		comm_end_time = MPI_Wtime();
-	}
-	else{
-		sum = local_sum;
-		comm_start_time = MPI_Wtime();
-		for(proc = 1; proc<numproc; proc++){
-			MPI_Recv(&local_sum, 1, MPI_LONG_LONG, proc, tag, MPI_COMM_WORLD, &status);
-			sum+=local_sum;	
-		}
-		comm_end_time = MPI_Wtime();
+	comm_start_time = MPI_Wtime();
+	MPI_Reduce(&local_sum, &sum, 1, MPI_LONG_LONG, MPI_SUM, master, MPI_COMM_WORLD);
+	comm_end_time = MPI_Wtime();
+	if(rank == master){
 		printf("The final sum is %lld \n", sum);
 	}
+	
 	end_time = MPI_Wtime();
 	total_time = end_time - start_time;
 	//init_total_time = init_end_time - init_start_time;
