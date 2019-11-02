@@ -206,7 +206,7 @@ The program should:
 
 ## Section 4  (run and compare)
 
-In this final section you are ruquested to run and measure strong scalability of  the program written in section 3.
+In this final section you are ruquested to run and measure strong scalability of the program written in section 3.
 
   - Run the implemented program for different large enough sizes of the array 
 
