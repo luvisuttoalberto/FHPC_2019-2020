@@ -140,7 +140,7 @@ The parallel code writes walltime for all the processor involved. Which of these
 
 - First let us do some running that constitutes a strong scaling test.
 
-This means keeping the problem size constant, or in other words, keeping Niter = 10 millions. Start by running the MPI code with only one processor doing the numerical computation. A comparison of this to the serial calculationgives you some idea of the overhead associated with MPI. Again what time do you consider here ?
+This means keeping the problem size constant, or in other words, keeping Niter = 10 millions. Start by running the MPI code with only one processor doing the numerical computation. A comparison of this to the serial calculation gives you some idea of the overhead associated with MPI. Again what time do you consider here ?
 
 - Keeping Niter = 10 millions, run the MPI code for 2, 4, 8 and 16 and 20 MPI processs.
 
@@ -210,9 +210,9 @@ In this final section you are ruquested to run and measure strong scalability of
 
   - Run the implemented program for different large enough sizes of the array 
 
-  - Plot as in section 3 scalability of the program  
+  - Plot as in section 3 scalability of the program  (plot the sperimental results and compare with the theoric)
 
-  - compare  performance results obtained against the performance model elaborated in section 2
+  - compare performance results obtained against the performance model elaborated in section 2
 
       - comment on the assumption made in section 1 about times: are they correct ? do you observe something different ? 
 

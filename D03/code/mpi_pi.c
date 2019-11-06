@@ -1,20 +1,9 @@
-/*
- * Copyright (C) 2015 - 2016 Master in High Performance Computing
- *
- * Adapted from the net by  Giuseppe Brandino. 
- * Last modified by Alberto Sartori. 
- * Addedd time and promoted to long long all important variables
- */
-
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
 #include <mpi.h>
-#include <time.h>
-//#define drand48 1.0/RANDMAXrand
-//#define srand48 srand
 #define USE MPI
 #define SEED 35791246
 
@@ -28,8 +17,7 @@ int main ( int argc , char *argv[ ] )
   double pi ;
    
   // times 
-  double start_time, end_time;  
-  clock_t c_start_time, c_end_time; 
+  double start_time, end_time;   
   int myid , numprocs , proc ;
   MPI_Status status;
   MPI_Request request;
@@ -49,7 +37,6 @@ int main ( int argc , char *argv[ ] )
 
   long long int N = atoll(argv[1])/numprocs;
 // take time of processors after initial I/O operation
-  c_start_time = clock();
   start_time = MPI_Wtime();
 
   // initialize random numbers 
@@ -85,15 +72,9 @@ int main ( int argc , char *argv[ ] )
 //    sleep(time_to_sleep);
 
     MPI_Ssend(&local_M , 1 ,MPI_LONG_LONG, master , tag ,MPI_COMM_WORLD) ;
-    c_end_time = clock();
     end_time=MPI_Wtime();
-
     printf ( "\n # walltime on processor %i : %10.8f \n",myid, end_time - start_time ) ;
-    
-    
   }
-  double c_total_time= ( (double) (c_end_time - c_start_time) )/CLOCKS_PER_SEC ;
-  printf ( "\n # walltime : %10.8f \n", c_total_time ); 
 
   MPI_Finalize() ; // let MPI finish up /
 

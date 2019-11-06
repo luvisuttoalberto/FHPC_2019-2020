@@ -1,0 +1,47 @@
+DESIGN:
+First source of optimization is your algorithm
+Second is Data model
+Then comes the other
+Unit test: you can isolate a single function (if it only does one task) and run it with good data and bad data: in this way you ca test the single function
+
+WHILE TODAY...:
+muops = microoperations
+
+Write non-obfuscated code:
+conditional branches are killer of optimization! watch out
+
+Some C-specific hints:
+example: volatile variable can't be on a register
+
+focus on the restrict:
+Here we have no guarantee that a and b don't overlap! If we put restrict before a and b we are telling to the compiler that there will be no memory overlap: in this way the compiler can perform some optimization
+
+Profile-guided optimization:
+you can use gcc –fprofile-use (for example) to use the information taken in previous runs (branches f.e.) to optimize your code
+
+Usually L1 is divided 32 KB for op, 32 for data; L2 is usually unified
+
+Cache mapping:
+memory block number necessary to store the address of the block to which the cache is referring in this moment
+
+Full mapping is very efficient in putting data in the cache, but is very inefficient in accessing data in the cache! This because the cpu have to access all the blocks in the cache, because the information can be anywhere.
+Direct mapping is very efficient and fast in accessing (same address); but it's not good in in inserting data in memory: for example 7 and F must go both in 7! So every time i put one I have to throw away the other one and so on; if these are counters in a loop it's a nightmare
+n-way associative is better; this is a n=2 example. Normally the caches are 8-way associative
+
+Actually you are filling the whole cache line with the first miss; that's why it's a miss. the element 1 is loaded, so when you access it it's a hit; and so on with the other elements
+
+Strided access: of course we are jumping across memory! No problem is N is small, everything is in our cache line. If N is big, it's a problem. Would it be better to have strided access on the original matrix? YES! Strided writes are more expensive than strided loads.
+
+writeback to memory: this wouldn't happen if you were writing on the same line
+
+graph: very big difference!! (log scale)
+
+Cache-associativity conflicts:
+the last 6 bits of the address tell the inline position. And then, with a given number of sets (N = 2^S), we have in the address, before the bits about the inline position, S bits to indicate the set position.
+
+Hot & cold fields:
+you will do more often the movement to another node than the do_something, if you have a very long linked list.
+since the key is only one value, when i load it I load all the line. If we put the pointer right after the double, we will already have it in cache. PROXIMITY
+
+
+

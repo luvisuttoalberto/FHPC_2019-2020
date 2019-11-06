@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <ptiming.h>
+//#include <ptiming.h>
 #include <time.h>
 
 
@@ -49,7 +49,10 @@ typedef struct node_t {
 int main( int argc, char **argv )
 {
   struct timespec ts;
-  clockid_t       id = CLOCK_PROCESS_CPUTIME_ID;
+  clockid_t       id = CLOCK_PROCESS_CPUTIME_ID; 
+  //only user space time for the process
+  //this can be much larger than the workload time in a mpi run because this countsfor 
+  //all the time consumed by all the threads
   
   // -------------------------------------
   // startup
