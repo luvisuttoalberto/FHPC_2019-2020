@@ -4,3 +4,44 @@ In communication between cpus I use only QPI bus; if I have to communicate betwe
 11
 On the PCI I place the Network interface card (NIC), which is needed to the network
 
+25
+The fat links are 4 for every line here, increasing from the lower to the top level (watch the previous graph)
+Solution: slide 26; constant bisection bandwidth network
+
+28
+We use Intelligent Network interface cards to do all the operation of transmission and delivery of the message, including the header insertion, the buffer selection (use it or not); if we don't use this, the processor has to do it and this takes away the computation time
+
+29
+We only care about infiniband, don't focus on omnipath
+
+30
+Time to open the channel (latency) very low; can transer a lot of data in little time (high-bandwidth)
+
+32
+Ulysses has 4x, Quad data rate
+
+33
+only 8 over 10 cause 2 are needed to check if the message is received
+
+36
+The positive thing about the infiniband is that all the things on the right are done on the infiniband card
+
+37
+On the right you are still on the user space!!! This is the reason why the latency on an infiniband is so little: using tcp/udp requires an interaction with the kernel
+
+38/39/40 not important
+41
+only thing important: from various mpi you can go, through infiniband, directly to the hardware specific driver
+NB: he will modify the slides removing the unnecessary things
+
+42
+Usually the slowest sequential process is the communication
+
+NB: the communication time can be written as
+Tcomm = Tlat + BW*Size
+with BW = bandwidth
+And Size = size of the message
+
+Useful to know how the cores you are using are disposed on the sockets/cpus/nodes with:
+--report-bindings
+

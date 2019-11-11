@@ -43,5 +43,32 @@ Hot & cold fields:
 you will do more often the movement to another node than the do_something, if you have a very long linked list.
 since the key is only one value, when i load it I load all the line. If we put the pointer right after the double, we will already have it in cache. PROXIMITY
 
+[big skip]
 
+The cost of branch mis-prediction: [112]
+NB: a for is normally forcasted as true, an if is normally forcasted a false; you can change this. How?
 
+Branch prediction: [141]
+In the functions version (see code loop.c) the optimization is done by the system, because he recognizes that a lot of branches are fixed decisions.
+
+146
+You could here do the verification of the condition outside of the for loop. Probably faster to do as the code on the slide, because the branch predictor can do the optimization for you since he can understand that there are a lot of 1 and then a lot of 0
+
+147
+This is a shifting of the bits; like an integer division for 2 (or multiplication if the shifting is done on the other sense)
+In this case i'm shifting by 31 positions
+Whatever is the data[ii] value, they are all shifted to the right. If the number is negative, all the bits will be 1, so the number is -1 in binary coding.
+Then I perform a logical AND with the negation of t; if we AND with all zeros, the number is 0 so i'm not summing up anything (I'm in the case that data[ii] is not greater than pivot, so i don't want to sum)
+
+150
+Calculating both branches
+151
+The vectorization is done in the following way: with little numbers we can do, in one operation, the condition and sum of all the numbers in this way:
+(numbers, ..., )>(P,P,P,P,P,P)
+And the multiply the result back to the numbers: 2 operations, now we can do the sum on all the final vector. Note that this can't be done with difficult condition operations.
+
+152
+This is not really a branch, this is just an evaluation
+
+156
+The fact that in the second case we have 27 in both is due to the fact that the data are unpredictable: failed branch prediction. The code is not stable; in the second case (next slide), it is stable
