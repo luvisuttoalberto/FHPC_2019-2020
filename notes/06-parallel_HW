@@ -1,0 +1,6 @@
+10
+In communication between cpus I use only QPI bus; if I have to communicate between cores in the same cpu, I can use Memory channels or, even faster, the last level shared cache
+
+11
+On the PCI I place the Network interface card (NIC), which is needed to the network
+
