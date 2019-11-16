@@ -1,3 +1,4 @@
+SISTEMA NUMERI SLIDE
 DESIGN:
 First source of optimization is your algorithm
 Second is Data model
@@ -75,8 +76,32 @@ The vectorization is done in the following way: with little numbers we can do, i
 (numbers, ..., )>(P,P,P,P,P,P)
 And then multiply the result back to the numbers: 2 operations, now we can do the sum on all the elements of the final vector. Note that this can't be done with difficult condition operations.
 
-152
+150 NON 152, CONTROLLA
 This is not really a branch, it's just an evaluation
 
 156
 The fact that in the second case we have 27 in both is due to the fact that the data are unpredictable: failed branch prediction. The code is not stable; in the second case (next slide), it is stable
+
+Comparison with .... data [165]
+P and R means predictable or random data
+
+Explicit prefetching [178]
+NB: the array here must be already sorted
+180
+Don't use this, it's just didactic.
+The first object is an address.
+0 is for reading, 1 is for writing, 2 is both.
+The 3 is for the priority (1 to 3, 3 is max)
+Big difference: I don't have to wait for the data to arrive from my node!
+
+Prefetching by moral suasion [184]
+Why do we Elaborate() four elements in every cycle?
+Note that here I'm not using e, I'm elaborating a. In this way, e is travelling with the whole cache line, so when i'm going to use it in the next iteration of the for, the following values are going (luckily) to be in the cache.
+It could have been done with only one element, doing something like
+for(int i = 0; i<N; i++){
+	e = Elements[i+1];
+	elaborate(a);
+	a = e;
+}
+This could be useful when you have more complicated data.
+

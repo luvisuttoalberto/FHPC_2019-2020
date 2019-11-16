@@ -1,0 +1,7 @@
+Hyper threading (HT):
+Hyper threading can improve performances because we are basically using two threads, doing different things, at the same time on the same core.
+In general HT is not really good for HPC because usually in HPC different threads do the same thing; it is useful only if they do different things.
+
+Opteron .....
+Note that here we have 4 numa zones [=regions], with 2 sockets! Watch the links between group of cores within the same socket. So it's not always true that the number of numa zones is the same as the number of sockets.
+
