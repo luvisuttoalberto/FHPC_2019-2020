@@ -132,7 +132,8 @@ int main( int argc, char **argv)
 #define BASENAME prefetching2.v
 #define SUFFIX   .c
 
-#include STR(BASENAME PREFETCH SUFFIX)
+#include STR(BASENAME PREFETCH SUFFIX) //here you are including all the other versions of prefetching2; it's used with the compile2 file, look at it (bash script)
+  //with this you are selecting the right kernel and including it
 
   // -------------------------------------------------------------------
   // -------------------------------------------------------------------
