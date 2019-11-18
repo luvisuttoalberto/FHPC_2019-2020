@@ -54,10 +54,6 @@ Since the key object of the struct is only one value, when i load it I load all 
 Pipelines: [108]
 In this way the time I have to wait for the second result is drastically reduced.
 
-
-
-[big skip]
-
 The cost of branch mis-prediction: [112]
 NB: a for is normally forecasted as true, an if is normally forecasted as false; you can change this. How? We will see.
 

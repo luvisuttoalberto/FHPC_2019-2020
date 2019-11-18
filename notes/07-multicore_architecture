@@ -1,0 +1,22 @@
+Hyper threading (HT):
+Hyper threading can improve performances because we are basically using two threads, doing different things, at the same time on the same core.
+In general HT is not really good for HPC because usually in HPC different threads do the same thing; it is useful only if they do different things.
+
+Opteron .....
+Note that here we have 4 numa zones [=regions], with 2 sockets! Watch the links between group of cores within the same socket. So it's not always true that the number of numa zones is the same as the number of sockets.
+
+Our dilemma:
+Usually if I am latency bounded it's better to do it in the first way; if I am memory bounded it's better in the second way
+
+Thread affinity and Data Locality:
+NB: you are not sure, usually, that a single process (MPItask) stays always on the same core. You can however bind them [?] (see slide) 
+The graph is with memory allocated on core y and process run on core x (maybe the other way, it's the same) [MEMORY LOCALITY!]
+
+Numactl on Ulysses:
+the table in the end are relative distances clearly, not absolute values; it's just to five an idea of the fact that cpus and memory have different distances
+
+ccNuma: cc in front means cache coerence among the Numa domains. Usually it's only said Numa: modern machine guarantees always cache coerence
+omp_num_threads is the variable that tells the compiler how many threads we want to spawn (it is valid also with processes, but here we are working with threads)
+
+Graph:
+Contention of resources that slow down the calculation is the reason why the difference is pretty small when I increase the number of threads.
