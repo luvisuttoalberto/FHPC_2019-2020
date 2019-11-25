@@ -1,4 +1,4 @@
-/* =============================================================================
+z/* =============================================================================
  * This file is part of the exercises for the Lectures on 
  *   "Parallel COmputing and OpenMP Introduction"
  * given at 
@@ -110,7 +110,7 @@ int main( int argc, char **argv )
   
 #pragma omp parallel for 
     for ( int ii = 0; ii < N; ii++ )
-#pragma omp atomic
+#pragma omp atomic //this is just like critical, but for a single instruction
       S += array[ii];
 
 #endif

@@ -1,5 +1,8 @@
 13
 In our computer we have this architercture (probably), we don't have different banks of memory
 
-47
+OpenMP basic loop
 Since i must be private, and I say implicit none, I must say that i is private and the other ones shared
+As a default, the variable of the for (the counter) is private for every thread. Here I am only saying it explicitely
+sum is shared too; mess up if not specified!
+

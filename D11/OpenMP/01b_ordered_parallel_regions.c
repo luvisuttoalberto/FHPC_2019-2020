@@ -77,7 +77,7 @@ int main( int argc, char **argv )
 	                           // those that succeed, print and modify the
 	                           // "order" value depends on which have been
 	                           // the previous ones and on the delay.
-#pragma critical                   
+#pragma omp critical                   
 	if ( order == my_thread_id )
 	  {
 	    printf( "\tgreetings from thread num %d\n", my_thread_id );
