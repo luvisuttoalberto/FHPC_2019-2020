@@ -1,5 +1,5 @@
 13
-In our computer we have this architercture (probably), we don't have different banks of memory
+In our computer we have this architecture (probably), we don't have different banks of memory
 
 OpenMP basic loop
 Since i must be private, and I say implicit none, I must say that i is private and the other ones shared
