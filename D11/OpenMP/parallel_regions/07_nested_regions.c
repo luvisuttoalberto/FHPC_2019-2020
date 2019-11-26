@@ -171,7 +171,9 @@ int function( char *father_name, int next )
       }
 
     int order = 0;
-    
+
+//why don't I put the if here? Because in that way the region is always entered by the thread 0, but not executed. But we don't have a return!! So we have an infinite loop
+//that's why we put the if on next and the return before the parallel region 
 #pragma omp parallel num_threads(next)
     {
       // here each thread gets its own id and

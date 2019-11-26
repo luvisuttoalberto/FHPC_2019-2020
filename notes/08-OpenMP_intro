@@ -6,3 +6,32 @@ Since i must be private, and I say implicit none, I must say that i is private a
 As a default, the variable of the for (the counter) is private for every thread. Here I am only saying it explicitely
 sum is shared too; mess up if not specified!
 
+Specializing execution in PR
+With binop we mean something like += or *=
+
+Solving the reduction /4
+check if here he fixed the code adding the parallel for
+
+OpenMP work assignment in loops
+Normally the default schedule is static
+
+Clauses in parallel for
+Normally, if you have nested loops, it is convenient to put the pragma parallel for only on the external one; in this way you can reduce the open and close openmp operations
+As an alternative, you can use collapse (search)
+Something about the level of complexity
+For example, you have this:
+for(i<Nr){
+	for(j<Nc){
+		M[i][j]...
+	}
+}
+
+If you ask to collapse the compiler probably does:
+for(k<Nr x Nc){
+	k=i*Nc+j
+}
+
+Something like that (the compiler is able to perform this)
+
+“touchfirst” policy
+NB: check if he changes this to malloc (he should, with calloc the memory is initialized at the moment of allocation)
