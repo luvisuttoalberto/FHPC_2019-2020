@@ -1,0 +1,4 @@
+File View basic example (and usage)
+Here I'm doing the same thing i was doing before!! It's reading one integer at a time (MPI_INT, MPI_INT)
+If we wanted for example to do the ode for the aess of using file views, we SHOULD USE mpi DATA TYPE (fix things here)
+We have to onstrut a data type that says that the first blok is the used one and then we have 3 empty blocks (according to the first process)

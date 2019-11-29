@@ -1,0 +1,26 @@
+9 Why I need I/O for scientific computing ?
+Sometimes checkpointing is even bigger than the output; VERY IMPORTANT
+Out of core computation: you need to process a (for example) very big matrix which can't be memorized totally on the RAM, so you do it one piece at a time; you an store on your memory a part of the matrix, you process it and dump the result on the memory, and so on (like aches do; there is a difference: in this case you have to program it specifically to do this, caches works like this on their own)
+
+Do we need to start optimizing I/O ? YES
+
+15 Application dataset complexity vs I/O
+Clearly I have to map from the complex data model of the scientific application to the simple data model of the operating system (linux in this case)
+This is very complicated: for example if on the data files you have some empty cells, in your application you can manage to (for example) not access these cells; so you have a sofisticated data model to save your data. But You can't exploit this sofisticated data model with your OS data model; so you can use dedicated high level libraries that are good enough (hopefully) to do this for you
+
+15 Challenges in Application I/O
+If you have a complex data model, the access to the data will probably be uncoordinated!!
+
+Serial I/O : spokeperson
+ex: I have a data structure distributed on different processors; one of this have to collect the result
+Note that this is difficult if data are big! You have to store all the data on P0
+
+Parallel I/O: File-per-Process
+What if in different moments you have to run the program in a different number of processor (and so you have to compare, in the end, different number of files). DIFFICULT
+
+Parallel I/O
+Note that you have to make the processes work in different parts of the shared file. You also need different part of memory where you have to write the different parts of the file. In this way you can increase the blablabla
+
+Parallel I/O on very large system..
+Best: have a spokeperson for every processor, that speaks for all the cores on the processor. Then you have a shared file for parallel I/O between the processors.
+In this way you don't have all the cores accessing the shared file. You can do this using different MPI communicator.
