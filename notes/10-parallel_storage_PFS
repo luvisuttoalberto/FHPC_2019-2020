@@ -1,0 +1,67 @@
+NFS architecture
+RPC remote procedure call (remote call from the client)
+Long journey, so not efficient in term of latency
+
+SAN vs NAS
+"SAN storage appears to the
+computer as its own storage" = allow me to see this as a disk on my pc
+
+[rivedi sta roba]
+
+Parallel FS
+All the H.. here are file striped over servers (before we striped over disks)
+When I want to read the file H06 I have to ask for the metadata and I will read it from only the third dataserver. Instead, when I want to read one of the first four I can read in parallel from different servers
+(same for writing)
+
+Comparing parallel FS
+Don't want to discuss this, we are interested mainly on metadata
+
+Recap on Metadata
+Can create performance problems because now metadata are on a dedicated file server
+
+Create a file on local FS
+Journal update is the most expensive: performance is dictated by this operation
+
+Lustre Principles
+MDS is the one you have to contact to create a file
+OST here are the "disk"
+From the remote client you can see the lustre filesystem as a normal filesystem
+
+Lustre layout (simple cluster)
+The blue ones on the right are OST
+You don't see how many OSS and OST and Data server, you just see a normal filesystem
+Don't look so much at the definitions of the next slide
+
+Lustre layout (complex infrastructure)
+If one of the two metadata server fails, the one who was in standby takes his place
+You can also see on the right that every OSS mount all of the OST (shared); so I have redundance also on my data
+Take on message: on a serious HPC architecture I have to provide at least two different servers (like this) to be sure not to lose data
+
+Lustre operations
+[See image in next slide]
+first interaction is to the MDS; the MDS ask to the OSS; one it's done, the Client can do File I/O and file locking
+The first transaction is complex and expensive
+So which kind of disk do i want to put on the MDS? SSD to be quick; I should also put an NVMe
+
+HPC infrastructure @ CRIBI
+Note that here we have 4 I/O srv. one of them is dedicated only on metadata; the other three are dedicated to OSS that write data. [see also next slide]
+The storage is a SAN 
+
+LUSTRE and storage solution
+Note that MDT is inside my I/O srv; that's because we don't want to go through iSCSI!!
+Note that if I lose the MTD I'm done; i don't know where to find my data.
+So the storage on the left is seen as a simple data storage from the OSS; instead, it's a SAN
+
+accessing LUSTRE filesystem
+Here I have the first level of parallelism: I write in parallel on different HD (raid)
+
+why “parallel” filesystem?
+This is another level of parallelism (first at OSS level, second on the parallel writing across HD)
+
+Non aligned stripes
+Be sure that each process is writing a file that goes aligned with the stipes of OST
+NB: not useful to stripe small file: too much overhead!!
+
+Picture phone
+NB: THE PERFORMANCE DOESN'T DEPEND ON THE NUMBER OF CLIENTS! (If the connection on the hardware is lower than the client connection)
+

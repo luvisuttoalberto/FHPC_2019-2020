@@ -1,0 +1,59 @@
+Storage Hierarchy:
+PFS = parallel file system
+we will focus on Lustre (our PFS)
+
+Storage Hierarchy (2)
+The flash here is the SSD
+
+Key metrics
+We will talk about reading and writing a block, not a stream; main difference: you have to write at least one block and you have to wait for the block to be ready. Here in IOPS is you many block I can write per seconds; latency is the time we have to wait to write the block.
+Is it a latency or a throughput metric ? It's a combination of the two. If you want to increase throughput you take very large blocks. If you have to read a small file you take very little block; you don't want to waste resources. The defragmentation that we usually do is to take all the blocks (which are all around the memory (fragmentated)) and reorder them to be near eah other (so faster to access)
+
+Current HDD technology
+These are the technologies that goes in the I/O scheduler
+
+RAID 0 : striping
+We write the data half on one disk, half on the other disk; so devide file over my disk
+Problem: you are inreasing the failure rating. If one of the disks fails, everything is gone; you an't recover ANY file; all of them are divided
+Solution: ->
+
+RAID 1 : redundancy
+I can also get something in reading performance: you can read half of the file from one disk and the other half on the other
+
+RAID 10 : striping +redundancy (1+0 / 0+1)
+In both cases, if two disks fails there is the possibility that we lose all data; In general, with important data, redundancy is necessary
+
+RAID 5
+If one disk fail, it's safe but requires rebuilding of the data
+
+RAID 6
+Check if raid 5 and 6 images are different (need to be)
+Here I have a double distributed parity code
+L-2 and L-2 for capacity and boh
+We are considering two disk as parity code
+
+File Systems: Basic Concepts
+The superblock is fundamental for the critical data
+
+File system : data layout and inode
+It's a mess: slows down operations. If people don't think carefully how to store metadata, this beocmes the bottleneck.
+
+Buffered I/O
+We don't want to touch this, we just have to know that it's there
+
+Posix API (1)
+So reading the metadata is more expensive and slow!
+Answer: LOCKS
+
+Posix API (2)
+Reading is non atomic, writing is
+
+Measure (raw) performance
+1. Because of latency: in second we are writing a lot of data so we are measuring real throughput
+2. Because of blocks
+
+Blocksize effect in the Random access
+You see that if you use large block size the performance of the ssd is not good
+Be sure that when you do the simulation you have to write in the correct block size so that you can maximize performance
+
+
