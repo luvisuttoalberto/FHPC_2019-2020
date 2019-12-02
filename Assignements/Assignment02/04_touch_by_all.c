@@ -30,12 +30,14 @@
 #     define _XOPEN_SOURCE 700
 #  endif
 #endif
+#define _GNU_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
 #include <sys/syscall.h>
+#include <sched.h>
 #include <omp.h>
 
 
@@ -78,10 +80,11 @@ int main( int argc, char **argv )
   if ( argc > 1 )
     N = atoi( *(argv+1) );
 
-  if ( (array = (double*)calloc( N, sizeof(double) )) == NULL )
+  if ( (array = (double*)malloc( N * sizeof(double) )) == NULL ){
     printf("I'm sorry, on some thread there is not"
 	   "enough memory to host %lu bytes\n",
 	   N * sizeof(double) ); return 1;
+  }
   
   // just give notice of what will happen and get the number of threads used
 #pragma omp parallel
@@ -131,7 +134,7 @@ int main( int argc, char **argv )
    */
 
   printf("Sum is %g, process took %g of wall-clock time\n",
-	 S, tend - tstart );
+	S, tend - tstart );
 
   
   free( array );
