@@ -1,0 +1,20 @@
+I/O benchmarking
+The second column is for parallel machines
+
+I/O microbenchmark to play
+Mdtest is for metadata performance
+
+IOR basic usage
+number of tasks here is 3
+
+See title slide distinction usage of -F flag
+Reason for large difference in the reading and writing: buffers!! The file system saves some of the file written on a buffer, so when you read it it's much faster
+But in this way I'm not measuring the real speed of the dile system for reading: I need to avoid this!!
+
+How fast are the metadata?
+Lustre is the lower! The one on top could be a normal file system
+Lower because there I'm asking to a machine that is on the net so lot of overhead! In the first case i have direct access to the part of the machine that do this
+
+[Don't concentrate a lot on Darshan]
+
+

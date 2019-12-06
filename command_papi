@@ -1,0 +1,3 @@
+export CC=gcc; ./configure --prefix=/usr/ --with-static-user-events --with-static-papi-events --with-static-lib --with-static-tools --with-perf-events
+export CC=gcc; ./configure --prefix=/usr/ --with-static-user-events --with-static-papi-events --with-static-lib --with-static-tools --with-shared-lib --with-perf-events
+export CC=gcc; ./configure --prefix=/usr/ --with-static-user-events --with-static-papi-events --with-static-lib --with-static-tools --with-shlib-tools --with-perf-events

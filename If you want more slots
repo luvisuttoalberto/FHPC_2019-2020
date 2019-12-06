@@ -1,0 +1,5 @@
+If you want more slots even if you have few cores, you can change a file "localhost" writing inside:
+localhost slots=N
+And then you can use a program with:
+mpirun --hostfile localhost -np N name_of_the_program
+localhost in this case is just the name of the file

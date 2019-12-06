@@ -57,7 +57,7 @@ Hence, the grand total ranges from **30** points (Ex 0 + 1), up to **37** points
 Take the source codes `01_array_sum.c` and `06_touch_by_all.c` that you find either in the `D11/OpenMP/parallel_loops` directory or in the `Assignment02/` directory, in the GIT repo.
 
 Both of the two codes sum-up the first N integer numbers, assigning to an array of double the value corresponding to its position, `array[i] = (double)i`.
-As we have seen, the fundamental difference between these two codes is the fact that in the first one the memory is initialised by the thread 0, whereas in the other code each thread initialises its memory.
+As we have seen, the fundamental difference between these two codes is the fact that in the first one the memory is initialized by the thread 0, whereas in the other code each thread initialises its memory.
 
 **<font color='green'> $\blacktriangleright$  You have to study the behaviour of the two codes:</font>**
 
@@ -67,7 +67,7 @@ As we have seen, the fundamental difference between these two codes is the fact 
 
 _<font color='green'>Optional but greatly appreciated ( meaning: not mandatory to obtain the full mark, but a correct implementation may furnish you 3 additional points ):</font>_
 
-_figure out how you could allocate and correctly initialise the right amount of memory separately on each thread_
+_figure out how you could allocate and correctly initialize the right amount of memory separately on each thread_
 
 
 

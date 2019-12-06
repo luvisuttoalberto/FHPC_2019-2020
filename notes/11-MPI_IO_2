@@ -1,0 +1,24 @@
+What MPI-I/O is dealing with...
+Which kind of data pattern
+are we performing here? Contiguous
+
+But do we need MPI for this?
+In general lseek could uses a locking mechanism
+
+What about this case?
+Why extremely inefficient?? Because I have to open the file twice (if not, because I have to seek again!) and for each operation I read only a small part of the file.
+
+File View basic example: contiguous access
+On the second MPI_INT it should be specified how many of the MPI_INT needs to be counted! ERROR HERE
+
+Main functions
+These are contructors for derived data types (structs)
+If count is one, the newtype is like the oldtype. In this way I can specify for  example a data type that tells the function before to read two MPI_INT at the beginning, then jump tot elements, and then read another two. (not the continuous data type)
+Note that this creates a new fyle type of name filetype [check??] creating a new (struct?)
+
+Collective I/O operations (1)
+Clearly I want to avoid the independent access, especially for very big files
+
+Using the Right MPI-IO Function
+Example taken from a book: if you need more informations look there
+

@@ -69,7 +69,7 @@ int main( int argc, char **argv )
   int     nthreads = 1;
   
   struct  timespec ts;
-  double *array;;
+  double *array;
 
   /*  -----------------------------------------------------------------------------
    *   initialize 
