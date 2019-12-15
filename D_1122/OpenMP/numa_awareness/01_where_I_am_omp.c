@@ -78,7 +78,7 @@ int main( int argc, char **argv )
     }
     int me      = omp_get_thread_num();
 
-    // get on what "place" this thread is running ong
+    // get on what "place" this thread is running on
     int place   = omp_get_place_num();
 
     // get how many places are available in the place list

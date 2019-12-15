@@ -113,11 +113,11 @@ int main( int argc, char **argv )
   // its own memory as long as
   // the parallel for has the
   // scheduling as the final one
-
+#if defined(_OPENMP)
 #pragma omp parallel for
   for ( int ii = 0; ii < N; ii++ )
     array[ii] = (double)ii;
-
+#endif
 
 
   /*  -----------------------------------------------------------------------------

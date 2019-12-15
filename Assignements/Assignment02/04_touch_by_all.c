@@ -87,6 +87,7 @@ int main( int argc, char **argv )
   }
   
   // just give notice of what will happen and get the number of threads used
+#if defined(_OPENMP)
 #pragma omp parallel
   {
 #pragma omp master
@@ -98,18 +99,21 @@ int main( int argc, char **argv )
 #pragma omp critical
     printf("thread %2d is running on core %2d\n", me, get_cpu_id() );    
   }
-
+#endif
 
   // initialize the array;
   // each thread is "touching"
   // its own memory as long as
   // the parallel for has the
   // scheduling as the final one
-
+#if defined(_OPENMP)
 #pragma omp parallel for
   for ( int ii = 0; ii < N; ii++ )
     array[ii] = (double)ii;
-
+#else
+for ( int ii = 0; ii < N; ii++ )
+    array[ii] = (double)ii;
+#endif
 
 
   /*  -----------------------------------------------------------------------------
@@ -120,13 +124,21 @@ int main( int argc, char **argv )
 
   double S       = 0;                                       // this will store the summation
   double tstart  = CPU_TIME_W;
+
+#if !defined(_OPENMP)
+  
+  for ( int ii = 0; ii < N; ii++ )                          // well, you may notice this implementation
+    S += array[ii];                                         // is particularly inefficient anyway
+
+#else
     
 #pragma omp parallel for reduction(+:S)
     for ( int ii = 0; ii < N; ii++ )
       S += array[ii];
 
-  double tend = CPU_TIME_W;
+#endif
 
+  double tend = CPU_TIME_W;
 
   /*  -----------------------------------------------------------------------------
    *   finalize

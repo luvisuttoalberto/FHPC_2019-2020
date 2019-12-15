@@ -78,7 +78,7 @@ int main( int argc, char **argv )
 
 
   // allocate memory
-  if ( (array = (double*)malloc( N, sizeof(double) )) == NULL )
+  if ( (array = (double*)calloc( N, sizeof(double) )) == NULL )
     {
       printf("I'm sorry, there is not enough memory to host %lu bytes\n", N * sizeof(double) );
       return 1;

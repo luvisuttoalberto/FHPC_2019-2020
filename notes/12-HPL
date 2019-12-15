@@ -1,0 +1,11 @@
+Optimization Techniques
+Positive also that there are parallelized versions of the same library so you get parallelization almost for free
+
+What is available ?
+Scalapack is a version of lapack for parallelization (scalability); same operation of lapack but can be run with a parallel approach
+
+BLAS history (2/3)
+OK for vector machines, but not for machine with caches is because of the large use of memory
+
+A few notes:
+If multithreading is abilitated watch out: it could be that I have 24 threads for each mpi process!! Use OMP_NUM_THREADS; if you run 12 processes just say OMP_NUM_THREADS=1 (per esempio). In the end, is it better to have 24 MPI with one thread or 1 MPI process with 24 threads? TRY!!

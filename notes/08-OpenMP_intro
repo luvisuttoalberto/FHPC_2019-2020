@@ -35,3 +35,7 @@ Something like that (the compiler is able to perform this)
 
 “touchfirst” policy
 NB: check if he changes this to malloc (he should, with calloc the memory is initialized at the moment of allocation)
+
+Threads affinity - BINDING [122]
+check for error, the third one should be proc bind
+
