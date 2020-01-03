@@ -262,8 +262,9 @@ int main( int argc, char **argv )
 	      {
 		while( semaphore == last )
 		  nanosleep(&nanot, NULL);	    
-	      }
-
+	      }//all the  other threads are here waiting (there is an implied barrier) so that only one thread checks if there are new data; when there are, they all begin to work
+        //there is a problem here! You can't assume that semaphore, in this few line of codes, has always the same value!! Someone else is writing, you don't know when
+        //you will need a mysemaphore variable shared (see other 02 code)
 	      int my_chunk = (semaphore-last)/inner_nthreads;
 	      int my_last  = my_chunk*(me+1);
 	      int my_first = my_chunk*me;

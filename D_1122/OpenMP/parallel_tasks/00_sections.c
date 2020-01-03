@@ -144,7 +144,7 @@ int main( int argc, char **argv )
   
   // we impose a spread policy on the outer level
   //
-#pragma omp parallel proc_bind(spread) shared(result) firstprivate(N)
+#pragma omp parallel proc_bind(spread) shared(result) firstprivate(N) //I want each of them to have their own copy of N; in this way every thread doesn't have to access the shared variable
   {
 
     // inside each section then, we spawn a new region
@@ -153,14 +153,15 @@ int main( int argc, char **argv )
     // the program
     //
 
-    #pragma omp sections reduction(+:result)
+    #pragma omp sections reduction(+:result)//if I didn't put a reduction here, it would be necessary to put a concurrency protection before updating the result, see line 164
     {
-
+    	//only three threads will do the work here, if there are more they won't do anything; they'll wait at the end of the parallel region
       #pragma omp  section
       {
 	double myresult = 0;
 	for( int jj = 0; jj < N; jj++ )
 	  myresult += heavy_work_0( array[jj] );
+	//#pragma omp atomic update
 	result += myresult;	    
       }
 

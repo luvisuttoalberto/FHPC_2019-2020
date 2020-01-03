@@ -48,7 +48,7 @@ Hence, the grand total ranges from **30** points (Ex 0 + 1), up to **37** points
 
 ------------
 
----------------------------------
+
 
 ### EXERCISE 0 *(mandatory)*
 

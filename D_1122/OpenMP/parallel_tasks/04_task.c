@@ -191,7 +191,7 @@ int main( int argc, char **argv )
             #pragma omp atomic
 	    result += myresult;
 	  }
-          #pragma omp task firstprivate(first, last) shared(result) untied
+          #pragma omp task firstprivate(first, last) shared(result) untied //untied means this task can be stopped and reexecuted by any thread
 	  {
 	    double myresult    = 0;
 	    for( int ii = first; ii < last; ii++)

@@ -39,3 +39,6 @@ NB: check if he changes this to malloc (he should, with calloc the memory is ini
 Threads affinity - BINDING [122]
 check for error, the third one should be proc bind
 
+OpenMP tasks [170]
+Note that task it's not a nested region. You are not creating new threads!!
+

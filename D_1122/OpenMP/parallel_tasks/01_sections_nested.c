@@ -152,7 +152,7 @@ int main( int argc, char **argv )
     // the program
     //
 
-    #pragma omp sections reduction(+:result)
+    #pragma omp sections reduction(+:result) // idea:distribute the work in every socket; in every socket, distribute the work to each thread of the socket
     {
       #pragma omp  section
       {
