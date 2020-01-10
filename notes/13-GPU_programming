@@ -1,0 +1,31 @@
+A little bit of history 2: the 00’s
+In this moment they start to develop GP GPU : General Purpose Graphic[al] process units
+
+Nvdia Cards
+Only look at compute capability
+FP32 Cuda Cores is what we are interested for HPC, but they are in single precision; better the FP64
+Tensorcore can do 4x4 matrix multiplication in parallel
+
+Nvidia slides: computing mode for accelerator
+MWC died, not anymore used
+Better the Heterogeneous computing approach
+
+Nvlink : avoid PCI- bus contention
+see later
+
+Heterogeneous Computing
+When I have to do omputation in the GPU, I have to move data from Host to the device; really bad, you have to move data through the PCIexpress (bottleneck). Maybe it's more efficient to work directly in the cpu
+
+Nvlink : avoid PCI- bus contention
+If you have money, go for this!
+In this way you can do MPI communication between the GPUs
+
+CUDA Parallel Computing Platform
+Programming approaches: these are three different approaches
+
+3 Steps to CUDA-accelerated application
+Step 2: Manage data locality: this is for moving data to the device
+
+srun -N 1 -p gpu2 --pty bash
+this is the way to obtain an interative section on a gpu 
+
