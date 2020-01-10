@@ -1,7 +1,7 @@
 cd FHPC_2019-2020/Assignment03/
 module load intel/18.4
 
-icc serial_mandelbrot.c -o serial_mandelbrot.x -std=c99
+icc serial_mandelbrot.c -o serial_mandelbrot.x -std=c99 -lrt
 icc op_mandelbrot.c -o op_mandelbrot.x -std=c99 -fopenmp -lrt
 icc dyn_op_mandelbrot.c -o dyn_op_mandelbrot.x -std=c99 -fopenmp -lrt
 
