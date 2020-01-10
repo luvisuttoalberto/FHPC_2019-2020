@@ -55,13 +55,14 @@ int main( int argc, char **argv ){
 	int I_max  = I_max_default;
 
 	int iterations = n_x*n_y;
+	int nthreads = 1;
 
 
 	if (( argc > 1 && argc < 8 ) || ( argc > 1 && argc > 8 )){
 		printf("arguments should be passed as\n");
 		printf("./mandelbrot.x n_x n_y x_L y_L x_R y_R I_max\n");
 	}
-	else if ( argc > 1 ){
+	else if ( argc > 2 ){ //remember to change this back to 1 when you finish to do the chunck size analysis!!!
 		n_x   = atoi( *(argv + 1) );
 		n_y   = atoi( *(argv + 2) );
 		x_L   = atof( *(argv + 3) );
@@ -70,6 +71,22 @@ int main( int argc, char **argv ){
 		y_R   = atof( *(argv + 6) );
 		I_max = atoi( *(argv + 7) );
 	}
+	int fraction = atoi( *(argv + 1));
+
+#pragma omp parallel
+	{
+		//int me = omp_get_thread_num();
+#pragma omp master
+		{
+			nthreads = omp_get_num_threads();
+			printf("omp prefix sum with %d threads \n", nthreads);
+		}
+	}
+
+	int serial_chunck = iterations/nthreads;
+	int chunk_size = serial_chunck/fraction;
+
+
 
 	double delta_x = ( x_R - x_L ) / ( n_x - 1 );
 	double delta_y = ( y_L - y_R ) / ( n_y - 1 );
@@ -77,7 +94,7 @@ int main( int argc, char **argv ){
 
 	double tstart  = CPU_TIME_W;
 
-#pragma omp parallel for firstprivate(delta_x, delta_y, x_L, y_L, I_max, n_x, n_y) collapse(2) schedule(dynamic, 800000)
+#pragma omp parallel for firstprivate(delta_x, delta_y, x_L, y_L, I_max, n_x, n_y) collapse(2) schedule(dynamic, chunk_size)
 	for ( int i = 0; i < n_y; ++i ){
 		for ( int j = 0; j < n_x; ++j ){
 			double c_y = y_L - delta_y * i;
