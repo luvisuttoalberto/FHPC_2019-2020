@@ -59,8 +59,8 @@ int main( int argc, char **argv ){
 
 
 	if (( argc > 1 && argc < 8 ) || ( argc > 1 && argc > 8 )){
-		//printf("arguments should be passed as\n");
-		//printf("./mandelbrot.x n_x n_y x_L y_L x_R y_R I_max\n");
+		printf("arguments should be passed as\n");
+		printf("./mandelbrot.x n_x n_y x_L y_L x_R y_R I_max\n");
 	}
 	else if ( argc > 2 ){ //remember to change this back to 1 when you finish to do the chunck size analysis!!!
 		n_x   = atoi( *(argv + 1) );
@@ -71,7 +71,6 @@ int main( int argc, char **argv ){
 		y_R   = atof( *(argv + 6) );
 		I_max = atoi( *(argv + 7) );
 	}
-	int fraction = atoi( *(argv + 1));
 
 #pragma omp parallel
 	{
@@ -83,7 +82,7 @@ int main( int argc, char **argv ){
 	}
 
 	int serial_chunck = iterations/nthreads;
-	int chunk_size = serial_chunck/fraction;
+	int chunk_size = serial_chunck/10;
 
 
 
@@ -119,9 +118,8 @@ int main( int argc, char **argv ){
 	}
 
 	double tend  = CPU_TIME_W;
-	printf("%d:\n", fraction);
-	printf("%g\n", tend - tstart);
-	//write_pgm_image( M, I_max, n_x, n_y, "image.pgm" );
+	printf("process took %g of wall-clock time\n", tend - tstart);
+	write_pgm_image( M, I_max, n_x, n_y, "image.pgm" );
 	free(M);
 	return 0;
 }
