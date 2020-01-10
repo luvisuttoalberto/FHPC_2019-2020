@@ -9,5 +9,5 @@ export KMP_AFFINITY=granularity=fine,scatter
 export OMP_NUM_THREADS=20
 
 for fraction in {1..1000}; do
-	./dyn_op_mandelbrot.x $fraction >> chunck_time.dat
+    ./dyn_op_mandelbrot.x $fraction >> chunck_time.dat
 done;
