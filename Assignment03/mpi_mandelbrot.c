@@ -15,8 +15,8 @@
 #include <mpi.h>
 #define USE MPI
 
-#define n_x_default 8000
-#define n_y_default 4000
+#define n_x_default 400
+#define n_y_default 200
 #define x_L_default -2.75
 #define y_L_default 1
 #define x_R_default 1.25
