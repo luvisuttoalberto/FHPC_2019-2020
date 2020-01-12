@@ -93,7 +93,7 @@ int main(int argc, char ** argv){
 	else{
 		int work_index;
 		int offset;
-		//unsigned char * local_buffer = (unsigned char *) calloc(n_x, sizeof(unsigned char));
+		unsigned char * local_buffer = (unsigned char *) calloc(1, sizeof(unsigned char));
 		while(1){
 
 			//say to the master that you are free
@@ -124,15 +124,16 @@ int main(int argc, char ** argv){
 					++k;
 				}
 
+
 				if(k==I_max){
-					MPI_File_write_at(file, offset + j, 0, 1, MPI_INT, &status);
+					local_buffer[0]=0;
 				}
 				else{
-					MPI_File_write_at(file, offset + j, k, 1, MPI_INT, &status);	
+					local_buffer[0]=k;
 				}
 			}
 			//output on file
-			//MPI_File_write_at(file, offset, local_buffer, n_x, MPI_INT, &status);
+			MPI_File_write_at(file, offset + j, local_buffer, 1, MPI_INT, &status);
 		}
 	//free(local_buffer);
 	}
