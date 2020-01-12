@@ -86,10 +86,9 @@ int main(int argc, char ** argv){
 		}
 		
 		for(int i = 1; i < numproc; ++i ){
-			MPI_Recv(&working_process, 1, MPI_INT, i, tag_libero, MPI_COMM_WORLD, &status);
-			MPI_Send(&i, 0, MPI_INT, i, tag_finito, MPI_COMM_WORLD);
+			MPI_Recv(&working_process, 1, MPI_INT, MPI_ANY_SOURCE, tag_libero, MPI_COMM_WORLD, &status);
+			MPI_Send(&i, 0, MPI_INT, working_process, tag_finito, MPI_COMM_WORLD);
 		}
-	
 	}
 	else{
 		int work_index;
