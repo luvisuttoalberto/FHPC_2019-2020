@@ -102,7 +102,7 @@ int main(int argc, char ** argv){
 			//wait for the work
 			MPI_Recv(&work_index, 1, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 			if(status.MPI_TAG == tag_finito){
-				printf("Process %d finishing the work", rank);
+				printf("Process %d finishing the work\n", rank);
 				break;
 			}
 
