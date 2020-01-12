@@ -80,7 +80,7 @@ int main(int argc, char ** argv){
 		while(current_line < n_y){
 
 			MPI_Recv(&working_process, 1, MPI_INT, MPI_ANY_SOURCE, tag_libero, MPI_COMM_WORLD, &status);
-			MPI_Isend(&current_line, 1, MPI_INT, working_process, tag_work, MPI_COMM_WORLD);
+			MPI_Send(&current_line, 1, MPI_INT, working_process, tag_work, MPI_COMM_WORLD);
 			++current_line;
 		
 		}
@@ -94,7 +94,7 @@ int main(int argc, char ** argv){
 		int work_index;
 		int offset;
 		unsigned char * local_buffer = (unsigned char *) calloc(n_x, sizeof(unsigned char));
-		while(true){
+		while(1){
 
 			//say to the master that you are free
 			MPI_Send(&rank, 1, MPI_INT, 0, tag_libero, MPI_COMM_WORLD);
