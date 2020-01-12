@@ -105,8 +105,8 @@ int main(int argc, char ** argv){
 				printf("Process %d finishing the work\n", rank);
 				break;
 			}
-
-			for ( int j = 0; j < n_x; ++j ){
+			int j;
+			for (j = 0; j < n_x; ++j ){
 				double c_y = y_L - delta_y * work_index;
 				double c_x = x_L + delta_x * j;
 				double z_x = 0;
