@@ -15,8 +15,8 @@
 #include <mpi.h>
 #define USE MPI
 
-#define n_x_default 40
-#define n_y_default 20
+#define n_x_default 8000
+#define n_y_default 4000
 #define x_L_default -2.75
 #define y_L_default 1
 #define x_R_default 1.25
@@ -24,6 +24,22 @@
 #define I_max_default 255
 
 #define CPU_TIME_W (clock_gettime( CLOCK_REALTIME, &ts ), (double)ts.tv_sec +(double)ts.tv_nsec * 1e-9)
+
+int write_pgm_image(int maxval, int xsize, int ysize, const char *image_name ){
+
+  FILE* image_file;
+  
+  image_file = fopen(image_name, "w"); 
+
+  int color_depth = 1 + ( (maxval>>8)>0 );
+  
+  int len = fprintf( image_file, "P5\n%d %d\n%d\n", xsize, ysize, maxval );
+
+  fclose( image_file ); 
+
+  return len;
+}
+
 
 int main(int argc, char ** argv){
 
@@ -38,9 +54,13 @@ int main(int argc, char ** argv){
 	int I_max  = I_max_default;
 	int numproc;
 	int rank;
+	int header_len;
 	int tag_work = 123;
 	int tag_finito = 14;
 	int tag_libero = 46;
+	/*unsigned char header = "P5\n%d %d\n%d\n";
+	int header_len = strlen(header);
+	printf("lunghezza stringa = %d", header_len);*/
 
 
 
@@ -64,6 +84,7 @@ int main(int argc, char ** argv){
 	double delta_x = ( x_R - x_L ) / ( n_x - 1 );
 	double delta_y = ( y_L - y_R ) / ( n_y - 1 );
 
+
 	MPI_File file;
 	MPI_Status status;
 	MPI_Init(&argc,&argv);
@@ -72,6 +93,14 @@ int main(int argc, char ** argv){
 	MPI_File_open(MPI_COMM_WORLD, "image.pgm", MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &file);
 	
 	if(rank == 0){
+		header_len = write_pgm_image(I_max, n_x, n_y, "image.pgm");
+	}
+	MPI_Bcast(&header_len, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+
+	if(rank == 0){
+
+		//MPI_File_write_at(file, 0, header, header_len, MPI_UNSIGNED_CHAR, &status);
 
 		int working_process;
 
@@ -129,8 +158,8 @@ int main(int argc, char ** argv){
 
 			}
 			//output on file
-			offset = work_index * n_x;
-			MPI_File_write_at(file, offset, local_buffer, n_x, MPI_INT, &status);
+			offset = header_len + work_index * n_x;
+			MPI_File_write_at(file, offset, local_buffer, n_x, MPI_UNSIGNED_CHAR, &status);
 		}
 	free(local_buffer);
 	}

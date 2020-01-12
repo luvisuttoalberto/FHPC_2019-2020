@@ -34,8 +34,6 @@ void write_pgm_image( void *image, int maxval, int xsize, int ysize, const char 
   int color_depth = 1 + ( (maxval>>8)>0 );
   
   fprintf( image_file, "P5\n%d %d\n%d\n", xsize, ysize, maxval );
-  
-  fwrite( image, color_depth, xsize * ysize, image_file );  
 
   fclose( image_file ); 
 
