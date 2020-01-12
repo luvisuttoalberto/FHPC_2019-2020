@@ -58,9 +58,6 @@ int main(int argc, char ** argv){
 	int tag_work = 123;
 	int tag_finito = 14;
 	int tag_libero = 46;
-	/*unsigned char header = "P5\n%d %d\n%d\n";
-	int header_len = strlen(header);
-	printf("lunghezza stringa = %d", header_len);*/
 
 
 
@@ -154,6 +151,9 @@ int main(int argc, char ** argv){
 
 				if(k!=I_max){
 					local_buffer[j] = k;
+				}
+				else{
+					local_buffer[j] = 0;
 				}
 
 			}
