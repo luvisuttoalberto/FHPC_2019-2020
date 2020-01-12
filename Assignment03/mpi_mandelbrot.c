@@ -12,6 +12,8 @@
 #include <sys/syscall.h>
 #include <sched.h>
 #include <math.h>
+#include <mpi.h>
+#define USE MPI
 
 #define n_x_default 8000
 #define n_y_default 4000
@@ -22,16 +24,6 @@
 #define I_max_default 255
 
 #define CPU_TIME_W (clock_gettime( CLOCK_REALTIME, &ts ), (double)ts.tv_sec +(double)ts.tv_nsec * 1e-9)
-
-int sum_array(int * array, int size){
-	int sum = 0;
-
-	for(int i = 0; i < size; ++i){
-		sum += array[i];
-	}
-	
-	return sum;
-}
 
 int main(int argc, char ** argv){
 
