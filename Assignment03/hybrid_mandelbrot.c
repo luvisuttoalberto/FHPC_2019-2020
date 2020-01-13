@@ -43,7 +43,7 @@ int write_pgm_image(int maxval, int xsize, int ysize, const char *image_name ){
 }
 
 
-
+/*
 int get_cpu_id( void )
 {
 #if defined(_GNU_SOURCE)                              // GNU SOURCE ------------
@@ -88,7 +88,7 @@ int read_proc__self_stat( int field, int *ret_val )
   cpuid    : 39
 
   read man /proc page for fully detailed infos
- */
+ *//*
 {
   // not used, just mnemonic
   // char *table[ 52 ] = { [0]="pid", [1]="father", [13]="utime", [14]="cutime", [18]="nthreads", [22]="rss", [38]="cpuid"};
@@ -121,7 +121,7 @@ int read_proc__self_stat( int field, int *ret_val )
 }
 
 
-
+*/
 
 int main(int argc, char ** argv){
 
@@ -145,13 +145,12 @@ int main(int argc, char ** argv){
 
 
 	int iterations = n_x*n_y;
-	//int nthreads = 1;
 
 	if (( argc > 1 && argc < 8 ) || ( argc > 1 && argc > 8 )){
 		printf("arguments should be passed as\n");
 		printf("./mandelbrot.x n_x n_y x_L y_L x_R y_R I_max\n");
 	}
-	else if ( argc > 2 ){ //remember to change this back to 1 when you finish to do the chunck size analysis!!!
+	else if ( argc > 1 ){
 		n_x   = atoi( *(argv + 1) );
 		n_y   = atoi( *(argv + 2) );
 		x_L   = atof( *(argv + 3) );
@@ -171,9 +170,6 @@ int main(int argc, char ** argv){
 	MPI_Comm_size(MPI_COMM_WORLD, &numproc);
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_File_open(MPI_COMM_WORLD, "image.pgm", MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &file);
-	
-	//int numcore = (numproc-1)*n_threads;
-	//int remainder = numcore%(numproc-1);
 
 	double tstart = MPI_Wtime();
 
@@ -185,8 +181,6 @@ int main(int argc, char ** argv){
 
 	if(rank == 0){
 
-		//MPI_File_write_at(file, 0, header, header_len, MPI_UNSIGNED_CHAR, &status);
-
 		int working_process;
 		int current_line[2];
 		current_line[0] = 0;
@@ -195,7 +189,6 @@ int main(int argc, char ** argv){
 		while(current_line[0] + n_threads < n_y){
 
 			MPI_Recv(&working_process, 1, MPI_INT, MPI_ANY_SOURCE, tag_libero, MPI_COMM_WORLD, &status);
-			//current_line[1] = ( current_line[0] + n_threads < n_y) ? n_threads : current_line[0] + n_threads - n_y ;
 			MPI_Send(&current_line, 2, MPI_INT, working_process, tag_work, MPI_COMM_WORLD);
 			current_line[0] += n_threads;
 		}
@@ -230,12 +223,11 @@ int main(int argc, char ** argv){
 				break;
 			}
 			if(work_index[1] != n_threads){
-				//free(local_buffer);
 				len = n_x * work_index[1];
 				local_buffer = (unsigned char *) realloc(local_buffer, len * sizeof(unsigned char));
 			}
 			stop = work_index[0] + work_index[1];
-			#pragma omp parallel
+			/*#pragma omp parallel
 			{
 				int me = omp_get_thread_num();
 				#pragma omp master
@@ -247,7 +239,7 @@ int main(int argc, char ** argv){
 				{
 					printf("thread %2d spawned by process %2d is running on core %2d\n", me, rank, get_cpu_id() );
 				}
-			}
+			}*/
 
 
 			#pragma omp parallel for firstprivate(delta_x, delta_y, x_L, y_L, I_max, n_x, n_y) collapse(2) schedule(guided)
