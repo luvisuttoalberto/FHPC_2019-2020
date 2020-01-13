@@ -89,6 +89,8 @@ int main(int argc, char ** argv){
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_File_open(MPI_COMM_WORLD, "image.pgm", MPI_MODE_CREATE | MPI_MODE_WRONLY, MPI_INFO_NULL, &file);
 	
+	double tstart = MPI_Wtime();
+
 	if(rank == 0){
 		header_len = write_pgm_image(I_max, n_x, n_y, "image.pgm");
 	}
@@ -163,6 +165,9 @@ int main(int argc, char ** argv){
 		}
 	free(local_buffer);
 	}
+
+	double tend = MPI_Wtime();
+	printf("process took %g of wall-clock time\n", tend - tstart);
 
 	MPI_File_close(&file);
 	MPI_Finalize();
