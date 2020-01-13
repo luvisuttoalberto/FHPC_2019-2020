@@ -145,7 +145,7 @@ int main(int argc, char ** argv){
 
 
 	int iterations = n_x*n_y;
-	int nthreads = 1;
+	//int nthreads = 1;
 
 	if (( argc > 1 && argc < 8 ) || ( argc > 1 && argc > 8 )){
 		printf("arguments should be passed as\n");
@@ -241,11 +241,11 @@ int main(int argc, char ** argv){
 				#pragma omp master
 				{
 					n_threads = omp_get_num_threads();
-					printf("omp prefix sum with %d threads \n", nthreads);
+					printf("omp prefix sum with %d threads \n", n_threads);
 				}
 				#pragma omp critical
 				{
-					printf("thread %2d is running on core %2d\n", me, get_cpu_id() );
+					printf("thread %2d spawned by process %2d is running on core %2d\n", me, rank, get_cpu_id() );
 				}
 			}
 
