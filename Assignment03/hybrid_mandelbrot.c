@@ -185,7 +185,7 @@ int main(int argc, char ** argv){
 				}
 			}
 			//output on file
-			offset = header_len + work_index[0] * len;
+			offset = header_len + work_index[0] * n_x;
 			MPI_File_write_at(file, offset, local_buffer, len, MPI_UNSIGNED_CHAR, &status);
 		}
 	free(local_buffer);
