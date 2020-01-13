@@ -54,7 +54,7 @@ int main( int argc, char **argv )
       x_R       = atof( *(argv + 5) );
       y_R       = atof( *(argv + 6) );
       I_max     = atoi( *(argv + 7) );
-      n_threads = atoi( *(argv + 😍 );
+      n_threads = atoi( *(argv + 8) );
     }
 
   double delta_x = ( x_R - x_L ) / ( n_x - 1 );
