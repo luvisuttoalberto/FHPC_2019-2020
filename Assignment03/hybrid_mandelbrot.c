@@ -13,6 +13,7 @@
 #include <sched.h>
 #include <math.h>
 #include <mpi.h>
+#include <omp.h>
 #define USE MPI
 
 #define n_x_default 8000
@@ -234,9 +235,11 @@ int main(int argc, char ** argv){
 				local_buffer = (unsigned char *) realloc(local_buffer, len * sizeof(unsigned char));
 			}
 			stop = work_index[0] + work_index[1];
-			#pragma omp parallel{
+			#pragma omp parallel
+			{
 				int me = omp_get_thread_num();
-				#pragma omp master{
+				#pragma omp master
+				{
 					n_threads = omp_get_num_threads();
 					printf("omp prefix sum with %d threads \n", nthreads);
 				}
