@@ -154,7 +154,7 @@ int main(int argc, char ** argv){
 				len = n_x * work_index[1];
 				local_buffer = (unsigned char *) realloc(local_buffer, len * sizeof(unsigned char));
 			}
-			int stop = work_index[0] + work_index[1]
+			int stop = work_index[0] + work_index[1];
 
 			#pragma omp parallel for firstprivate(delta_x, delta_y, x_L, y_L, I_max, n_x, n_y) collapse(2) schedule(guided)
 			for(int i = work_index[0]; i < stop; ++i){
