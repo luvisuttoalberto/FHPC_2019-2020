@@ -46,3 +46,4 @@ N here is the size of the array
 
 CUDA Threads
 Is it better to have hundreds of threads in one block or hundreds of blocks with one thread? Balance!!
+

@@ -1,0 +1,88 @@
+
+1	1	1	1	1	1
+2	2	2
+2	4	6
+1	2	3	4	5	6	
+
+1	1	1	1	1	1	1	1	1
+1	2	3	4	5	1	2	3	4
+				5				4
+1	2	3	4	5	6	7	8	9
+
+
+1	1	1	1	1	1	1	1	1	1
+1	2	3	4	1	2	3	1	2	3
+			4			3			3
+			4			7			10
+1	2	3	4	5	6	7	8	9	10
+
+
+
+
+1	1	1	1	1	1	1	1
+	2		2		2		2
+			4				4
+			4				8	
+	2		4		6		8		
+1	2	3	4	5	6	7	8
+
+
+
+
+1	2	3	4	5	6
+	2		7		11
+	2		9		20
+1	2	5	9	14	20
+
+
+
+
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+	2		2		2		2		2		2		2		2
+			4				4				4				4
+							8								8
+							8								16
+			4				8				12				16
+	2		4		6		8		10		12		14		16
+1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	
+
+
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+2	2	2	2	2	2	2	2
+4	4	4	4
+8	8
+8	16
+4	8	12	16
+2	4	6	8	10	12	14	16
+1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16
+
+perf c2c report (or record, can't remember)
+c2c means cache to cache
+watch load remote dram difference between 01 06
+perf -T records per thread data
+
+numero threads = 2
+max level = 3
+current level = 2
+N_vector = [8,4,2]
+
+intermedi:
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1			array
+2	2	2	2	2	2	2	2											livello 0
+4	4	4	4															livello 1
+8	16																	livello 2
+0	0	0	0	0	0	0	8	0	0	0	0	0	0	0	16			prefix_sum
+
+(ii+1)*2^(curr_lev+1)-1 -2^(curr_lev+1) = ii*2^(curr_lev+1)-1
+
+
+//ha senso metterli in prefix e poi fare la somma utilizzando l'array del livello successivo come già faccio? NO, i livelli dopo come fanno?
+
+//due strade per evitate di copiare volta per volta da un livello all'altro gli elementi definitivi:
+1. li copio direttamente sul prefix sum finale e devo gestire gli indici per inserirli; poi faccio la somma utilizzando l'array precedente o quello della prefix sum?
+per inserirli in prefix sum uso potenze di due per i posti corrispondenti
+NON CONVIENE?????
+
+
+
+

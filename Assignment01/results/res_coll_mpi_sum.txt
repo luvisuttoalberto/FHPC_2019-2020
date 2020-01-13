@@ -1,0 +1,30 @@
+
+process 0] reading time: 0.0000009537
+[process 0] communication time: 0.0000028610
+[process 0] computation time: 2.5007910728
+[process 0] total time: 2.5008399487
+
+process 0] reading time: 0.0000000000
+[process 0] communication time: 0.0000209808
+[process 0] computation time: 1.2859659195
+[process 0] total time: 1.2860229015
+
+process 0] reading time: 0.0000009537
+[process 0] communication time: 0.0006070137
+[process 0] computation time: 0.6432759762
+[process 0] total time: 0.6439170837
+
+process 0] reading time: 0.0000000000
+[process 0] communication time: 0.0007100105
+[process 0] computation time: 0.3412408829
+[process 0] total time: 0.3419899940
+
+process 0] reading time: 0.0000009537
+[process 0] communication time: 0.0003950596
+[process 0] computation time: 0.1815128326
+[process 0] total time: 0.1819500923
+
+process 0] reading time: 0.0000011921
+[process 0] communication time: 0.0010809898
+[process 0] computation time: 0.1453089714
+[process 0] total time: 0.1464209557

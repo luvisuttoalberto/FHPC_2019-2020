@@ -1,0 +1,77 @@
+EXERCISE 3
+Possibilità per fare la somma:
+1. Fare ogni volta la somma dell'elemento che si sta trattando + la somma già eseguita dei precedenti elementi (difficile da parallelizzare)
+	Con ogni thread che fa la somma di un elemento e poi ne chiede un altro
+2. Fare ogni volta la somma di tutti gli elementi precedenti; più semplice da parallelizzare ma due problemi:
+	2.1 Devo utilizzare schedule dinamica perchè altrimenti ho load unbalancing
+	2.2 Non efficiente, devo fare molte più operazioni
+3. Fare ogni volta la somma dell'elemento che si sta trattando + la somma già eseguita dei precedenti elementi però ogni thread fa un "pezzo". Come lo parallelizzo?
+	i thread successivi devono comunque aspettare che finiscano i thread precedenti.
+4. Ogni thread fa la somma del suo blocco.
+	Ricorsivamente, una volta finito un blocco, il thread somma a tutti gli elementi del blocco successivo l'ultimo elemento del blocco precedente.
+
+
+ESEMPIO
+2 THREAD
+
+1	2	3	4	5	6	7	8	9	10
+
+thread0:
+scrive in array locale:
+1	3	6	10	15
+
+thread1:
+scrive in array locale (come fanno a vederlo gli altri? Dovrebbe essere condiviso? Allora lo vede (e lo tratta) solo lui (vedi sotto)):
+6	13	21	30	40
+
+
+
+vettore finale:
+1	3	6	10	15	21	28	36	45	55
+
+Se i blocchi sono troppo grandi, poi qualcuno sta ad aspettare.
+Oppure la somma la faccio dai blocchi finali!
+Forse posso fare in modo che i thread continuino a fare le somme dei blocchi successivi, tenendole in stack.
+Iterativamente verificano se tocca a loro fare la "somma completa" di uno dei blocchi che hanno fatto (complicato: se ho molti blocchi come faccio a controllare ogni volta?
+Inoltre la memoria da controllare è shared: continuo accesso a memoria condivisa diminuisce le performance)
+
+
+ESEMPIO
+3 THREAD
+vettore iniziale
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+
+risultato finale:
+1	2	3	4	5	6	7	8	9	10	11	12	13	14	15
+
+thread0:
+1	1	1	1	1
+
+risultato finale
+1	2	3	4	5
+
+thread1:
+1	1	1	1	1
+
+risultato finale
+1	2	3	4	5
+
+thread 2:
+1	1	1	1	1
+
+risultato finale
+1	2	3	4	5
+
+Meglio blocchi molto grandi o blocchi molto piccoli? Piccoli per aspettare di meno! Se sono piccoli ci mettono tutti poco tempo, non si aspetta mai.
+DIVIDE ET IMPERA? 
+Ogni thread fa la somma di due numeri e torna il risultato in un array contiviso (?)
+Come tenere conto di quale bisogna fare?
+Lascio fare al pragma magari.
+Parto dal parallelizzare un for e ci metto un while fuori che verifica quanto è lunga la parte da calcolare. (magari verifica anche quanti array servono e se ci sono meno numeri da sommare che thread lo fa fare a un solo thread)
+Il for agisce per fare la somma parziale di ogni pezzo di array, precedentemente diviso dal parallel for, e fare la reduction della somme parziali
+Scrivendo il tutto sulla casella corretta dell'array finale.
+Ha senso usare dei critical?? Aumentano l'overhead ma forse in alcuni casi sono necessari. Magari usa dei single!! Così gli altri thread nel frattempo vanno avanti
+Forse meglio lasciar fare al compilatore
+Idea: parto dalla fine!
+
+
