@@ -177,10 +177,10 @@ int main(int argc, char ** argv){
 					}
 
 					if(k!=I_max){
-						local_buffer[i*n_x + j] = k;
+						local_buffer[(i-work_index[0]) * n_x + j] = k;
 					}
 					else{
-						local_buffer[i*n_x + j] = 0;
+						local_buffer[(i-work_index[0]) * n_x + j] = 0;
 					}
 
 				}
