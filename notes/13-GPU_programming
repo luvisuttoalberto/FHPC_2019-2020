@@ -29,3 +29,16 @@ Step 2: Manage data locality: this is for moving data to the device
 srun -N 1 -p gpu2 --pty bash
 this is the way to obtain an interative section on a gpu 
 
+GPU Programming Languages
+We will focus on Cuda C
+
+Hello World!
+Note that this will run on the cpu
+
+Hello World! with Device Code
+The function mykernel will run on the device (the GPU)
+The other parts will still be managed by the host (the CPU)
+
+Moving to Parallel
+N here is the size of the array
+
