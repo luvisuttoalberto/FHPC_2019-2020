@@ -42,3 +42,7 @@ The other parts will still be managed by the host (the CPU)
 Moving to Parallel
 N here is the size of the array
 
+[rivedi fino a review]
+
+CUDA Threads
+Is it better to have hundreds of threads in one block or hundreds of blocks with one thread? Balance!!

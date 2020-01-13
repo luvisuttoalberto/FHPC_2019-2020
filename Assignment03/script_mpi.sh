@@ -11,15 +11,15 @@ mpicc mpi_mandelbrot.c -o mpi_mandelbrot.x -lrt -std=c99
 
 printf $"p"'\t'"w_c_p"'\t'"w_c_s"'\t'"elapsed"'\t'"serial"'\n' > mandelbrot.dat
 
-for p in {1..20}; do
+for p in {2..20}; do
     
     /usr/bin/time mpirun -np $p ./mpi_mandelbrot.x 1> raw_mandelbrot.dat 2>&1
     
 
-    w_c_p_s=$(cat raw_mandelbrot.dat | grep took | cut -f 3  -d " ")
+    w_c_p_s=$(cat raw_mandelbrot.dat | grep took | cut -f 3  -d " " | sort | tail -n 1 )
     
 
-    if [ $p == 1 ]
+    if [ $p == 2 ]
     then
         export w_c_s_s="$(echo $w_c_p_s)"
     fi
