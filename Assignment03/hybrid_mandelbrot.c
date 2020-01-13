@@ -44,7 +44,7 @@ int write_pgm_image(int maxval, int xsize, int ysize, const char *image_name ){
 
 int main(int argc, char ** argv){
 
-	struct timespec ts;
+	//struct timespec ts;
 
 	int n_x    = n_x_default;
 	int n_y    = n_y_default;
@@ -136,8 +136,9 @@ int main(int argc, char ** argv){
 	else{
 		int work_index[2];
 		int offset;
+		int stop;
 		int len = n_threads * n_x;
-		unsigned char * local_buffer = (unsigned char *) calloc(len, sizeof(unsigned char));
+		unsigned char * local_buffer = (unsigned char *) malloc(len * sizeof(unsigned char));
 		while(1){
 
 			//say to the master that you are free
@@ -154,7 +155,7 @@ int main(int argc, char ** argv){
 				len = n_x * work_index[1];
 				local_buffer = (unsigned char *) realloc(local_buffer, len * sizeof(unsigned char));
 			}
-			int stop = work_index[0] + work_index[1];
+			stop = work_index[0] + work_index[1];
 
 			#pragma omp parallel for firstprivate(delta_x, delta_y, x_L, y_L, I_max, n_x, n_y) collapse(2) schedule(guided)
 			for(int i = work_index[0]; i < stop; ++i){
@@ -176,10 +177,10 @@ int main(int argc, char ** argv){
 					}
 
 					if(k!=I_max){
-						local_buffer[j] = k;
+						local_buffer[i*n_x + j] = k;
 					}
 					else{
-						local_buffer[j] = 0;
+						local_buffer[i*n_x + j] = 0;
 					}
 
 				}
