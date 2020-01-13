@@ -24,7 +24,7 @@
 #define I_max_default 255
 #define n_threads_default 6
 
-#define CPU_TIME_W (clock_gettime( CLOCK_REALTIME, &ts ), (double)ts.tv_sec +(double)ts.tv_nsec * 1e-9)
+//#define CPU_TIME_W (clock_gettime( CLOCK_REALTIME, &ts ), (double)ts.tv_sec +(double)ts.tv_nsec * 1e-9)
 
 int write_pgm_image(int maxval, int xsize, int ysize, const char *image_name ){
 
@@ -107,8 +107,6 @@ int main(int argc, char ** argv){
 		//MPI_File_write_at(file, 0, header, header_len, MPI_UNSIGNED_CHAR, &status);
 
 		int working_process;
-
-		int step = n_threads;
 		int current_line[2];
 		current_line[0] = 0;
 		current_line[1] = n_threads;
@@ -180,7 +178,7 @@ int main(int argc, char ** argv){
 						local_buffer[(i-work_index[0]) * n_x + j] = k;
 					}
 					else{
-						local_buffer[(i-work_index[0]) * n_x + j] = 0;
+						local_buffer[(i-work_index[0]) * n_x + j] = 255;
 					}
 
 				}
