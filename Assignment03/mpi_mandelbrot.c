@@ -68,7 +68,7 @@ int main(int argc, char ** argv){
 		printf("arguments should be passed as\n");
 		printf("./mandelbrot.x n_x n_y x_L y_L x_R y_R I_max\n");
 	}
-	else if ( argc > 2 ){ //remember to change this back to 1 when you finish to do the chunck size analysis!!!
+	else if ( argc > 1 ){
 		n_x   = atoi( *(argv + 1) );
 		n_y   = atoi( *(argv + 2) );
 		x_L   = atof( *(argv + 3) );
