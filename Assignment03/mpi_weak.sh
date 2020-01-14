@@ -15,7 +15,7 @@ printf $"p"'\t'"elapsed"'\t'"serial"'\n' > weak_mpi.dat
 
 for p in {2..20}; do
 
-    root="$(echo "scale=3; sqrt($p)" | bc)"
+    root="$(echo "scale=3; sqrt($p-1)" | bc)"
 
     n_x=$(echo $root*8000 | bc)
     n_y=$(echo $root*4000 | bc)
