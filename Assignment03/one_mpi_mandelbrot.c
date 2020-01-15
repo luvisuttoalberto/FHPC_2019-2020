@@ -131,11 +131,11 @@ int main(int argc, char ** argv){
 				else{
 					local_buffer[0]=k;
 				}
+				MPI_File_write_at(file, offset + j, local_buffer, 1, MPI_INT, &status);
 			}
 			//output on file
-			MPI_File_write_at(file, offset + j, local_buffer, 1, MPI_INT, &status);
 		}
-	//free(local_buffer);
+	free(local_buffer);
 	}
 
 	MPI_File_close(&file);

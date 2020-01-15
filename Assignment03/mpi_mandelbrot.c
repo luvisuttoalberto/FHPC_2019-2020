@@ -25,7 +25,7 @@
 
 #define CPU_TIME_W (clock_gettime( CLOCK_REALTIME, &ts ), (double)ts.tv_sec +(double)ts.tv_nsec * 1e-9)
 
-int write_pgm_image(int maxval, int xsize, int ysize, const char *image_name ){
+int write_header(int maxval, int xsize, int ysize, const char *image_name ){
 
   FILE* image_file;
   
@@ -56,13 +56,8 @@ int main(int argc, char ** argv){
 	int rank;
 	int header_len;
 	int tag_work = 123;
-	int tag_finito = 14;
-	int tag_libero = 46;
-
-
-
-	int iterations = n_x*n_y;
-	int nthreads = 1;
+	int tag_end = 14;
+	int tag_free = 46;
 
 	if (( argc > 1 && argc < 8 ) || ( argc > 1 && argc > 8 )){
 		printf("arguments should be passed as\n");
@@ -92,14 +87,12 @@ int main(int argc, char ** argv){
 	double tstart = MPI_Wtime();
 
 	if(rank == 0){
-		header_len = write_pgm_image(I_max, n_x, n_y, "image.pgm");
+		header_len = write_header(I_max, n_x, n_y, "image.pgm");
 	}
 	MPI_Bcast(&header_len, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
 
 	if(rank == 0){
-
-		//MPI_File_write_at(file, 0, header, header_len, MPI_UNSIGNED_CHAR, &status);
 
 		int working_process;
 
@@ -107,29 +100,29 @@ int main(int argc, char ** argv){
 
 		while(current_line < n_y){
 
-			MPI_Recv(&working_process, 1, MPI_INT, MPI_ANY_SOURCE, tag_libero, MPI_COMM_WORLD, &status);
+			MPI_Recv(&working_process, 1, MPI_INT, MPI_ANY_SOURCE, tag_free, MPI_COMM_WORLD, &status);
 			MPI_Send(&current_line, 1, MPI_INT, working_process, tag_work, MPI_COMM_WORLD);
 			++current_line;
 		
 		}
 		
 		for(int i = 1; i < numproc; ++i ){
-			MPI_Recv(&working_process, 1, MPI_INT, MPI_ANY_SOURCE, tag_libero, MPI_COMM_WORLD, &status);
-			MPI_Send(&i, 0, MPI_INT, working_process, tag_finito, MPI_COMM_WORLD);
+			MPI_Recv(&working_process, 1, MPI_INT, MPI_ANY_SOURCE, tag_free, MPI_COMM_WORLD, &status);
+			MPI_Send(&i, 0, MPI_INT, working_process, tag_end, MPI_COMM_WORLD);
 		}
 	}
 	else{
 		int work_index;
 		int offset;
-		unsigned char * local_buffer = (unsigned char *) calloc(n_x, sizeof(unsigned char));
+		unsigned char * local_buffer = (unsigned char *) malloc(n_x * sizeof(unsigned char));
 		while(1){
 
 			//say to the master that you are free
-			MPI_Send(&rank, 1, MPI_INT, 0, tag_libero, MPI_COMM_WORLD);
+			MPI_Send(&rank, 1, MPI_INT, 0, tag_free, MPI_COMM_WORLD);
 			
 			//wait for the work
 			MPI_Recv(&work_index, 1, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
-			if(status.MPI_TAG == tag_finito){
+			if(status.MPI_TAG == tag_end){
 				printf("Process %d finishing the work\n", rank);
 				break;
 			}
@@ -168,7 +161,6 @@ int main(int argc, char ** argv){
 
 	double tend = MPI_Wtime();
 	printf("process took %g of wall-clock time\n", tend - tstart);
-
 	MPI_File_close(&file);
 	MPI_Finalize();
 	return 0;
