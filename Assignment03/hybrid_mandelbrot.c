@@ -265,7 +265,7 @@ int main(int argc, char ** argv){
 						local_buffer[(i-work_index[0]) * n_x + j] = k;
 					}
 					else{
-						local_buffer[(i-work_index[0]) * n_x + j] = 255;
+						local_buffer[(i-work_index[0]) * n_x + j] = 0;
 					}
 
 				}
