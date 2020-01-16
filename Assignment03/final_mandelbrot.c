@@ -14,8 +14,8 @@
 #include <omp.h>
 #include <math.h>
 
-#define n_x_default 800000
-#define n_y_default 400000
+#define n_x_default 80000
+#define n_y_default 40000
 #define x_L_default -2.75
 #define y_L_default 1
 #define x_R_default 1.25
