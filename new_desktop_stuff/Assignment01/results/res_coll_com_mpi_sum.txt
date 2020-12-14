@@ -1,0 +1,29 @@
+process 0] reading time: 0.0000009537
+[process 0] total communication time: 0.0000050068
+[process 0] computation time: 2.5004820824
+[process 0] total time: 2.5004999638
+
+process 0] reading time: 0.0000009537
+[process 0] total communication time: 0.0000398159
+[process 0] computation time: 1.2864260674
+[process 0] total time: 1.2864558697
+
+process 0] reading time: 0.0000021458
+[process 0] total communication time: 0.0032579899
+[process 0] computation time: 0.6434860229
+[process 0] total time: 0.6467318535
+
+process 0] reading time: 0.0000009537
+[process 0] total communication time: 0.0000722408
+[process 0] computation time: 0.3414568901
+[process 0] total time: 0.3415019512
+
+process 0] reading time: 0.0000019073
+[process 0] total communication time: 0.0004110336
+[process 0] computation time: 0.1814310551
+[process 0] total time: 0.1818289757
+
+process 0] reading time: 0.0000009537
+[process 0] total communication time: 0.0000789165
+[process 0] computation time: 0.1452078819
+[process 0] total time: 0.1452500820

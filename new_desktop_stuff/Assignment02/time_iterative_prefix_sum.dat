@@ -1,0 +1,415 @@
+Final times levels taken
+
+numero threads = 1
+max level = 1
+3,98712 
+max level = 2
+4,54221 
+max level = 3
+4,99471 
+max level = 4
+5,42294 
+max level = 5
+5,7343 
+max level = 6
+5,9794 
+max level = 7
+6,10104 
+max level = 8
+6,15741 
+max level = 9
+6,21514 
+max level = 10
+6,22332 
+max level = 11
+6,22765 
+max level = 12
+6,25299 
+max level = 13
+6,238 
+max level = 14
+6,23229 
+max level = 15
+6,2531 
+max level = 16
+6,24847 
+max level = 17
+6,24094 
+max level = 18
+6,24944 
+max level = 19
+6,24911 
+max level = 20
+6,23384 
+max level = 21
+6,24633 
+max level = 22
+6,25712 
+max level = 23
+6,24035 
+max level = 24
+6,24671 
+max level = 25
+6,25343 
+max level = 26
+6,23424 
+max level = 27
+6,23965 
+max level = 28
+6,20668 
+max level = 29
+6,23327 
+numero threads = 2
+max level = 1
+2,14799 
+max level = 2
+2,25915 
+max level = 3
+2,41082 
+max level = 4
+2,57763 
+max level = 5
+2,73073 
+max level = 6
+2,83092 
+max level = 7
+2,88822 
+max level = 8
+2,92673 
+max level = 9
+2,93471 
+max level = 10
+2,93715 
+max level = 11
+2,94902 
+max level = 12
+2,94192 
+max level = 13
+2,95745 
+max level = 14
+2,94727 
+max level = 15
+2,94684 
+max level = 16
+2,94388 
+max level = 17
+2,95503 
+max level = 18
+2,95908 
+max level = 19
+2,9514 
+max level = 20
+2,9548 
+max level = 21
+2,95997 
+max level = 22
+2,94434 
+max level = 23
+2,9533 
+max level = 24
+2,96741 
+max level = 25
+2,95131 
+max level = 26
+2,95747 
+max level = 27
+2,96048 
+max level = 28
+2,95006 
+max level = 29
+2,96558 
+numero threads = 4
+max level = 1
+1,45792 
+max level = 2
+1,43899 
+max level = 3
+1,4981 
+max level = 4
+1,5875 
+max level = 5
+1,66575 
+max level = 6
+1,72957 
+max level = 7
+1,77571 
+max level = 8
+1,80448 
+max level = 9
+1,81737 
+max level = 10
+1,81537 
+max level = 11
+1,82975 
+max level = 12
+1,8306 
+max level = 13
+1,81267 
+max level = 14
+1,84782 
+max level = 15
+1,82767 
+max level = 16
+1,81221 
+max level = 17
+1,85025 
+max level = 18
+1,81908 
+max level = 19
+1,85345 
+max level = 20
+1,83969 
+max level = 21
+1,83734 
+max level = 22
+1,82079 
+max level = 23
+1,84038 
+max level = 24
+1,8292 
+max level = 25
+1,85326 
+max level = 26
+1,84159 
+max level = 27
+1,83114 
+max level = 28
+1,85128 
+max level = 29
+1,85391 
+numero threads = 8
+max level = 1
+1,17813 
+max level = 2
+1,11056 
+max level = 3
+1,12127 
+max level = 4
+1,19809 
+max level = 5
+1,29067 
+max level = 6
+1,30463 
+max level = 7
+1,37059 
+max level = 8
+1,41458 
+max level = 9
+1,38255 
+max level = 10
+1,41873 
+max level = 11
+1,432 
+max level = 12
+1,39324 
+max level = 13
+1,437 
+max level = 14
+1,419 
+max level = 15
+1,40529 
+max level = 16
+1,42826 
+max level = 17
+1,42558 
+max level = 18
+1,4164 
+max level = 19
+1,41975 
+max level = 20
+1,42573 
+max level = 21
+1,42227 
+max level = 22
+1,421 
+max level = 23
+1,43163 
+max level = 24
+1,43254 
+max level = 25
+1,41129 
+max level = 26
+1,44494 
+max level = 27
+1,43168 
+max level = 28
+1,43278 
+max level = 29
+1,44429 
+numero threads = 10
+max level = 1
+1,15224 
+max level = 2
+1,06507 
+max level = 3
+1,0939 
+max level = 4
+1,17088 
+max level = 5
+1,2247 
+max level = 6
+1,28491 
+max level = 7
+1,31834 
+max level = 8
+1,36356 
+max level = 9
+1,368 
+max level = 10
+1,36609 
+max level = 11
+1,38318 
+max level = 12
+1,3807 
+max level = 13
+1,38294 
+max level = 14
+1,37083 
+max level = 15
+1,4002 
+max level = 16
+1,36837 
+max level = 17
+1,38505 
+max level = 18
+1,39188 
+max level = 19
+1,36787 
+max level = 20
+1,39235 
+max level = 21
+1,40611 
+max level = 22
+1,37494 
+max level = 23
+1,39637 
+max level = 24
+1,38858 
+max level = 25
+1,37597 
+max level = 26
+1,41399 
+max level = 27
+1,4007 
+max level = 28
+1,37278 
+max level = 29
+1,40817 
+numero threads = 16
+max level = 1
+1,18564 
+max level = 2
+1,10613 
+max level = 3
+1,14776 
+max level = 4
+1,22808 
+max level = 5
+1,27465 
+max level = 6
+1,34583 
+max level = 7
+1,39538 
+max level = 8
+1,39813 
+max level = 9
+1,42194 
+max level = 10
+1,43115 
+max level = 11
+1,41363 
+max level = 12
+1,44128 
+max level = 13
+1,42316 
+max level = 14
+1,42131 
+max level = 15
+1,4342 
+max level = 16
+1,41402 
+max level = 17
+1,42888 
+max level = 18
+1,42789 
+max level = 19
+1,43144 
+max level = 20
+1,42488 
+max level = 21
+1,44811 
+max level = 22
+1,43903 
+max level = 23
+1,43726 
+max level = 24
+1,46845 
+max level = 25
+1,43755 
+max level = 26
+1,43806 
+max level = 27
+1,4904 
+max level = 28
+1,44057 
+max level = 29
+1,4478 
+numero threads = 20
+max level = 1
+1,3236 
+max level = 2
+1,18395 
+max level = 3
+1,22321 
+max level = 4
+1,30408 
+max level = 5
+1,3573 
+max level = 6
+1,4104 
+max level = 7
+1,4371 
+max level = 8
+1,45966 
+max level = 9
+1,48667 
+max level = 10
+1,47313 
+max level = 11
+1,49442 
+max level = 12
+1,49703 
+max level = 13
+1,48016 
+max level = 14
+1,4845 
+max level = 15
+1,49627 
+max level = 16
+1,47491 
+max level = 17
+1,50672 
+max level = 18
+1,48027 
+max level = 19
+1,49914 
+max level = 20
+1,49367 
+max level = 21
+1,50538 
+max level = 22
+1,51065 
+max level = 23
+1,51884 
+max level = 24
+1,50708 
+max level = 25
+1,50622 
+max level = 26
+1,51543 
+max level = 27
+1,51967 
+max level = 28
+1,51415 
+max level = 29
+1,52941 

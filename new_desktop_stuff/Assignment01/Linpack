@@ -1,0 +1,13 @@
+Cpu frequency: 2.5 GHz, 3.1G Turbo
+Number of cpu cores: 2
+Flops/cycle : 4
+CPUs per node: 1
+Peak performance pc: 24.8 GFlops/s
+
+Smartphone: 2 processori, max 1
+Cortex-A53 e Cortex-A73
+Core: 4 e 4
+Frequency: 1.8GHz e 2.36GHz
+Flops/cycle : 2
+Peak performance Smartphone: 18.8 GFlops/s
+or 14.4 GFlops/s

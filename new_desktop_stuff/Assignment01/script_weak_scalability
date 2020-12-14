@@ -1,0 +1,2 @@
+for procs in 1 2 4 8 16 20 ; do mpirun -np ${procs} ./mpi_pi.x $((${procs}*10000000)) ; done
+
